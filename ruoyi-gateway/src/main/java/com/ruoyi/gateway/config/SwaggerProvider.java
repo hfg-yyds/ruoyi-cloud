@@ -2,6 +2,7 @@ package com.ruoyi.gateway.config;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.config.GatewayProperties;
 import org.springframework.cloud.gateway.route.RouteLocator;
@@ -15,12 +16,11 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 
 /**
  * 聚合系统接口
- * 
+ *
  * @author ruoyi
  */
 @Component
-public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigurer
-{
+public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigurer {
     /**
      * Swagger2默认的url后缀
      */
@@ -38,12 +38,11 @@ public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigu
 
     /**
      * 聚合其他服务接口
-     * 
+     *
      * @return
      */
     @Override
-    public List<SwaggerResource> get()
-    {
+    public List<SwaggerResource> get() {
         List<SwaggerResource> resourceList = new ArrayList<>();
         List<String> routes = new ArrayList<>();
         // 获取网关中配置的route
@@ -60,8 +59,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigu
         return resourceList;
     }
 
-    private SwaggerResource swaggerResource(String name, String location)
-    {
+    private SwaggerResource swaggerResource(String name, String location) {
         SwaggerResource swaggerResource = new SwaggerResource();
         swaggerResource.setName(name);
         swaggerResource.setLocation(location);
@@ -70,8 +68,7 @@ public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigu
     }
 
     @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry)
-    {
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
         /** swagger-ui 地址 */
         registry.addResourceHandler("/swagger-ui/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/");

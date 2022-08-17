@@ -19,8 +19,8 @@
       <!-- 上传提示 -->
       <div class="el-upload__tip" slot="tip" v-if="showTip">
         请上传
-        <template v-if="fileSize"> 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b> </template>
-        <template v-if="fileType"> 格式为 <b style="color: #f56c6c">{{ fileType.join("/") }}</b> </template>
+        <template v-if="fileSize"> 大小不超过 <b style="color: #f56c6c">{{ fileSize }}MB</b></template>
+        <template v-if="fileType"> 格式为 <b style="color: #f56c6c">{{ fileType.join("/") }}</b></template>
         的文件
       </div>
     </el-upload>
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { getToken } from "@/utils/auth";
+import {getToken} from "@/utils/auth";
 
 export default {
   name: "FileUpload",
@@ -89,7 +89,7 @@ export default {
           // 然后将数组转为对象数组
           this.fileList = list.map(item => {
             if (typeof item === "string") {
-              item = { name: item, url: item };
+              item = {name: item, url: item};
             }
             item.uid = item.uid || new Date().getTime() + temp++;
             return item;
@@ -151,7 +151,7 @@ export default {
     },
     // 上传成功回调
     handleUploadSuccess(res) {
-      this.uploadList.push({ name: res.data.url, url: res.data.url });
+      this.uploadList.push({name: res.data.url, url: res.data.url});
       if (this.uploadList.length === this.number) {
         this.fileList = this.fileList.concat(this.uploadList);
         this.uploadList = [];
@@ -190,18 +190,21 @@ export default {
 .upload-file-uploader {
   margin-bottom: 5px;
 }
+
 .upload-file-list .el-upload-list__item {
   border: 1px solid #e4e7ed;
   line-height: 2;
   margin-bottom: 10px;
   position: relative;
 }
+
 .upload-file-list .ele-upload-list__item-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: inherit;
 }
+
 .ele-upload-list__item-content-action .el-link {
   margin-right: 10px;
 }

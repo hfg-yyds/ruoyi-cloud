@@ -1,4 +1,4 @@
-version : '3.8'
+version: '3.8'
 services:
   ruoyi-nacos:
     container_name: ruoyi-nacos
@@ -28,13 +28,13 @@ services:
       - ./mysql/logs:/logs
       - ./mysql/data:/var/lib/mysql
     command: [
-          'mysqld',
-          '--innodb-buffer-pool-size=80M',
-          '--character-set-server=utf8mb4',
-          '--collation-server=utf8mb4_unicode_ci',
-          '--default-time-zone=+8:00',
-          '--lower-case-table-names=1'
-        ]
+        'mysqld',
+        '--innodb-buffer-pool-size=80M',
+        '--character-set-server=utf8mb4',
+        '--collation-server=utf8mb4_unicode_ci',
+        '--default-time-zone=+8:00',
+        '--lower-case-table-names=1'
+    ]
     environment:
       MYSQL_DATABASE: 'ry-cloud'
       MYSQL_ROOT_PASSWORD: password
@@ -130,7 +130,7 @@ services:
     ports:
       - "9300:9300"
     volumes:
-    - ./ruoyi/uploadPath:/home/ruoyi/uploadPath
+      - ./ruoyi/uploadPath:/home/ruoyi/uploadPath
   ruoyi-visual-monitor:
     container_name: ruoyi-visual-monitor
     build:

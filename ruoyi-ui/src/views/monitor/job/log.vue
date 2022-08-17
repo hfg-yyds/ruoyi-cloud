@@ -67,7 +67,8 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['monitor:job:remove']"
-        >删除</el-button>
+        >删除
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -77,7 +78,8 @@
           size="mini"
           @click="handleClean"
           v-hasPermi="['monitor:job:remove']"
-        >清空</el-button>
+        >清空
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -87,7 +89,8 @@
           size="mini"
           @click="handleExport"
           v-hasPermi="['monitor:job:export']"
-        >导出</el-button>
+        >导出
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -96,22 +99,23 @@
           icon="el-icon-close"
           size="mini"
           @click="handleClose"
-        >关闭</el-button>
+        >关闭
+        </el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
     <el-table v-loading="loading" :data="jobLogList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="日志编号" width="80" align="center" prop="jobLogId" />
-      <el-table-column label="任务名称" align="center" prop="jobName" :show-overflow-tooltip="true" />
+      <el-table-column type="selection" width="55" align="center"/>
+      <el-table-column label="日志编号" width="80" align="center" prop="jobLogId"/>
+      <el-table-column label="任务名称" align="center" prop="jobName" :show-overflow-tooltip="true"/>
       <el-table-column label="任务组名" align="center" prop="jobGroup" :show-overflow-tooltip="true">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_job_group" :value="scope.row.jobGroup"/>
         </template>
       </el-table-column>
-      <el-table-column label="调用目标字符串" align="center" prop="invokeTarget" :show-overflow-tooltip="true" />
-      <el-table-column label="日志信息" align="center" prop="jobMessage" :show-overflow-tooltip="true" />
+      <el-table-column label="调用目标字符串" align="center" prop="invokeTarget" :show-overflow-tooltip="true"/>
+      <el-table-column label="日志信息" align="center" prop="jobMessage" :show-overflow-tooltip="true"/>
       <el-table-column label="执行状态" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_common_status" :value="scope.row.status"/>
@@ -130,7 +134,8 @@
             icon="el-icon-view"
             @click="handleView(scope.row)"
             v-hasPermi="['monitor:job:query']"
-          >详细</el-button>
+          >详细
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -180,8 +185,8 @@
 </template>
 
 <script>
-import { getJob} from "@/api/monitor/job";
-import { listJobLog, delJobLog, cleanJobLog } from "@/api/monitor/jobLog";
+import {getJob} from "@/api/monitor/job";
+import {listJobLog, delJobLog, cleanJobLog} from "@/api/monitor/jobLog";
 
 export default {
   name: "JobLog",
@@ -241,7 +246,7 @@ export default {
     },
     // 返回按钮
     handleClose() {
-      const obj = { path: "/monitor/job" };
+      const obj = {path: "/monitor/job"};
       this.$tab.closeOpenPage(obj);
     },
     /** 搜索按钮操作 */
@@ -268,21 +273,23 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const jobLogIds = this.ids;
-      this.$modal.confirm('是否确认删除调度日志编号为"' + jobLogIds + '"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除调度日志编号为"' + jobLogIds + '"的数据项？').then(function () {
         return delJobLog(jobLogIds);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
-      }).catch(() => {});
+      }).catch(() => {
+      });
     },
     /** 清空按钮操作 */
     handleClean() {
-      this.$modal.confirm('是否确认清空所有调度日志数据项？').then(function() {
+      this.$modal.confirm('是否确认清空所有调度日志数据项？').then(function () {
         return cleanJobLog();
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("清空成功");
-      }).catch(() => {});
+      }).catch(() => {
+      });
     },
     /** 导出按钮操作 */
     handleExport() {

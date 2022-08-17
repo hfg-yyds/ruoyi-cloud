@@ -24,7 +24,8 @@
       </el-form-item>
     </el-form>
     <el-row>
-      <el-table @row-click="clickRow" ref="table" :data="dbTableList" @selection-change="handleSelectionChange" height="260px">
+      <el-table @row-click="clickRow" ref="table" :data="dbTableList" @selection-change="handleSelectionChange"
+                height="260px">
         <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="tableName" label="表名称" :show-overflow-tooltip="true"></el-table-column>
         <el-table-column prop="tableComment" label="表描述" :show-overflow-tooltip="true"></el-table-column>
@@ -47,7 +48,8 @@
 </template>
 
 <script>
-import { listDbTable, importTable } from "@/api/tool/gen";
+import {listDbTable, importTable} from "@/api/tool/gen";
+
 export default {
   data() {
     return {
@@ -107,7 +109,7 @@ export default {
         this.$modal.msgError("请选择要导入的表");
         return;
       }
-      importTable({ tables: tableNames }).then(res => {
+      importTable({tables: tableNames}).then(res => {
         this.$modal.msgSuccess(res.msg);
         if (res.code === 200) {
           this.visible = false;

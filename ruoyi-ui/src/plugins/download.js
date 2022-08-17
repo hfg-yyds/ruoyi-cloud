@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { Message } from 'element-ui'
-import { saveAs } from 'file-saver'
-import { getToken } from '@/utils/auth'
+import {Message} from 'element-ui'
+import {saveAs} from 'file-saver'
+import {getToken} from '@/utils/auth'
 import errorCode from '@/utils/errorCode'
-import { blobValidate } from "@/utils/ruoyi";
+import {blobValidate} from "@/utils/ruoyi";
 
 const baseURL = process.env.VUE_APP_BASE_API
 
@@ -14,11 +14,11 @@ export default {
       method: 'get',
       url: url,
       responseType: 'blob',
-      headers: { 'Authorization': 'Bearer ' + getToken() }
+      headers: {'Authorization': 'Bearer ' + getToken()}
     }).then(async (res) => {
       const isLogin = await blobValidate(res.data);
       if (isLogin) {
-        const blob = new Blob([res.data], { type: 'application/zip' })
+        const blob = new Blob([res.data], {type: 'application/zip'})
         this.saveAs(blob, name)
       } else {
         this.printErrMsg(res.data);

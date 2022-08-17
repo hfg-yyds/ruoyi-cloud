@@ -61,7 +61,8 @@
           :disabled="multiple"
           @click="handleDelete"
           v-hasPermi="['system:logininfor:remove']"
-        >删除</el-button>
+        >删除
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -71,7 +72,8 @@
           size="mini"
           @click="handleClean"
           v-hasPermi="['system:logininfor:remove']"
-        >清空</el-button>
+        >清空
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -82,7 +84,8 @@
           :disabled="single"
           @click="handleUnlock"
           v-hasPermi="['system:logininfor:unlock']"
-        >解锁</el-button>
+        >解锁
+        </el-button>
       </el-col>
       <el-col :span="1.5">
         <el-button
@@ -92,23 +95,27 @@
           size="mini"
           @click="handleExport"
           v-hasPermi="['system:logininfor:export']"
-        >导出</el-button>
+        >导出
+        </el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table ref="tables" v-loading="loading" :data="list" @selection-change="handleSelectionChange" :default-sort="defaultSort" @sort-change="handleSortChange">
-      <el-table-column type="selection" width="55" align="center" />
-      <el-table-column label="访问编号" align="center" prop="infoId" />
-      <el-table-column label="用户名称" align="center" prop="userName" :show-overflow-tooltip="true" sortable="custom" :sort-orders="['descending', 'ascending']" />
-      <el-table-column label="地址" align="center" prop="ipaddr" width="130" :show-overflow-tooltip="true" />
+    <el-table ref="tables" v-loading="loading" :data="list" @selection-change="handleSelectionChange"
+              :default-sort="defaultSort" @sort-change="handleSortChange">
+      <el-table-column type="selection" width="55" align="center"/>
+      <el-table-column label="访问编号" align="center" prop="infoId"/>
+      <el-table-column label="用户名称" align="center" prop="userName" :show-overflow-tooltip="true" sortable="custom"
+                       :sort-orders="['descending', 'ascending']"/>
+      <el-table-column label="地址" align="center" prop="ipaddr" width="130" :show-overflow-tooltip="true"/>
       <el-table-column label="登录状态" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_common_status" :value="scope.row.status"/>
         </template>
       </el-table-column>
-      <el-table-column label="描述" align="center" prop="msg" />
-      <el-table-column label="访问时间" align="center" prop="accessTime" sortable="custom" :sort-orders="['descending', 'ascending']" width="180">
+      <el-table-column label="描述" align="center" prop="msg"/>
+      <el-table-column label="访问时间" align="center" prop="accessTime" sortable="custom"
+                       :sort-orders="['descending', 'ascending']" width="180">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.accessTime) }}</span>
         </template>
@@ -126,7 +133,7 @@
 </template>
 
 <script>
-import { list, delLogininfor, cleanLogininfor, unlockLogininfor } from "@/api/system/logininfor";
+import {list, delLogininfor, cleanLogininfor, unlockLogininfor} from "@/api/system/logininfor";
 
 export default {
   name: "Logininfor",
@@ -192,7 +199,7 @@ export default {
     /** 多选框选中数据 */
     handleSelectionChange(selection) {
       this.ids = selection.map(item => item.infoId)
-      this.single = selection.length!=1
+      this.single = selection.length != 1
       this.multiple = !selection.length
       this.selectName = selection.map(item => item.userName);
     },
@@ -205,30 +212,33 @@ export default {
     /** 删除按钮操作 */
     handleDelete(row) {
       const infoIds = row.infoId || this.ids;
-      this.$modal.confirm('是否确认删除访问编号为"' + infoIds + '"的数据项？').then(function() {
+      this.$modal.confirm('是否确认删除访问编号为"' + infoIds + '"的数据项？').then(function () {
         return delLogininfor(infoIds);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
-      }).catch(() => {});
+      }).catch(() => {
+      });
     },
     /** 清空按钮操作 */
     handleClean() {
-      this.$modal.confirm('是否确认清空所有登录日志数据项？').then(function() {
+      this.$modal.confirm('是否确认清空所有登录日志数据项？').then(function () {
         return cleanLogininfor();
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("清空成功");
-      }).catch(() => {});
+      }).catch(() => {
+      });
     },
     /** 解锁按钮操作 */
     handleUnlock() {
       const username = this.selectName;
-      this.$modal.confirm('是否确认解锁用户"' + username + '"数据项?').then(function() {
+      this.$modal.confirm('是否确认解锁用户"' + username + '"数据项?').then(function () {
         return unlockLogininfor(username);
       }).then(() => {
         this.$modal.msgSuccess("用户" + username + "解锁成功");
-      }).catch(() => {});
+      }).catch(() => {
+      });
     },
     /** 导出按钮操作 */
     handleExport() {

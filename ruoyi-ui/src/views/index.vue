@@ -4,37 +4,42 @@
       <el-col :sm="24" :lg="24">
         <blockquote class="text-warning" style="font-size: 14px">
           领取阿里云通用云产品1888优惠券
-          <br />
+          <br/>
           <el-link
             href="https://www.aliyun.com/minisite/goods?userCode=brki8iof"
             type="primary"
             target="_blank"
-            >https://www.aliyun.com/minisite/goods?userCode=brki8iof</el-link
+          >https://www.aliyun.com/minisite/goods?userCode=brki8iof
+          </el-link
           >
-          <br />
+          <br/>
           领取腾讯云通用云产品2860优惠券
-          <br />
+          <br/>
           <el-link
             href="https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console"
             type="primary"
             target="_blank"
-            >https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console</el-link
+          >https://cloud.tencent.com/redirect.php?redirect=1025&cps_key=198c8df2ed259157187173bc7f4f32fd&from=console
+          </el-link
           >
-          <br />
+          <br/>
           阿里云服务器折扣区
           <el-link href="http://aly.ruoyi.vip" type="primary" target="_blank"
-            >>☛☛点我进入☚☚</el-link
+          >>☛☛点我进入☚☚
+          </el-link
           >
           &nbsp;&nbsp;&nbsp; 腾讯云服务器秒杀区
           <el-link href="http://txy.ruoyi.vip" type="primary" target="_blank"
-            >>☛☛点我进入☚☚</el-link
-          ><br />
+          >>☛☛点我进入☚☚
+          </el-link
+          >
+          <br/>
           <h4 class="text-danger">
             云产品通用红包，可叠加官网常规优惠使用。(仅限新用户)
           </h4>
         </blockquote>
 
-        <hr />
+        <hr/>
       </el-col>
     </el-row>
     <el-row :gutter="20">
@@ -56,14 +61,16 @@
             icon="el-icon-cloudy"
             plain
             @click="goTarget('https://gitee.com/y_project/RuoYi-Cloud')"
-            >访问码云</el-button
+          >访问码云
+          </el-button
           >
           <el-button
             size="mini"
             icon="el-icon-s-home"
             plain
             @click="goTarget('http://ruoyi.vip')"
-            >访问主页</el-button
+          >访问主页
+          </el-button
           >
         </p>
       </el-col>
@@ -102,7 +109,7 @@
         </el-row>
       </el-col>
     </el-row>
-    <el-divider />
+    <el-divider/>
     <el-row :gutter="20">
       <el-col :xs="24" :sm="24" :md="12" :lg="8">
         <el-card class="update-log">
@@ -111,31 +118,33 @@
           </div>
           <div class="body">
             <p>
-              <i class="el-icon-s-promotion"></i> 官网：<el-link
+              <i class="el-icon-s-promotion"></i> 官网：
+              <el-link
                 href="http://www.ruoyi.vip"
                 target="_blank"
-                >http://www.ruoyi.vip</el-link
+              >http://www.ruoyi.vip
+              </el-link
               >
             </p>
             <p>
               <i class="el-icon-user-solid"></i> QQ群：<s>满42799195</s> <s>满170157040</s>
               <s>满130643120</s> <s>满225920371</s> <s>满201705537</s> <s>满236543183</s>
               <s>满213618602</s> <a href="https://jq.qq.com/?_wv=1027&k=kiU5WDls" target="_blank">
-                148794840</a
-              >
+              148794840</a
+            >
             </p>
             <p>
               <i class="el-icon-chat-dot-round"></i> 微信：<a
-                href="javascript:;"
-                >/ *若依</a
-              >
+              href="javascript:;"
+            >/ *若依</a
+            >
             </p>
             <p>
               <i class="el-icon-money"></i> 支付宝：<a
-                href="javascript:;"
-                class="支付宝信息"
-                >/ *若依</a
-              >
+              href="javascript:;"
+              class="支付宝信息"
+            >/ *若依</a
+            >
             </p>
           </div>
         </el-card>
@@ -235,7 +244,7 @@
                 <li>代码生成新增Java类型Boolean</li>
                 <li>定时任务目标字符串过滤特殊字符</li>
                 <li>定时任务目标字符串验证包名白名单</li>
-				<li>升级nacos到最新版2.0.4</li>
+                <li>升级nacos到最新版2.0.4</li>
                 <li>升级spring-cloud到最新版2021.0.0</li>
                 <li>升级spring-boot到最新版本2.6.3</li>
                 <li>升级spring-boot-admin到最新版2.6.1</li>
@@ -265,17 +274,17 @@
                 <li>新增tab对象简化页签操作</li>
                 <li>修改获取缓存信息方式</li>
                 <li>修改权限认证注解实现</li>
-				<li>自定义文字复制剪贴指令</li>
+                <li>自定义文字复制剪贴指令</li>
                 <li>升级axios到最新版本0.24.0</li>
                 <li>升级core-js到最新版本3.19.1</li>
                 <li>升级jsencrypt到最新版本3.2.1</li>
                 <li>升级js-cookie到最新版本3.0.1</li>
-				<li>升级clipboard到最新版本2.0.8</li>
+                <li>升级clipboard到最新版本2.0.8</li>
                 <li>升级velocity到最新版本2.3</li>
                 <li>升级spring-boot到最新版本2.5.6</li>
                 <li>升级spring-boot-admin到最新版2.5.4</li>
                 <li>升级dynamic-ds到最新版本3.5.0</li>
-				<li>代码生成预览支持复制内容</li>
+                <li>代码生成预览支持复制内容</li>
                 <li>修复五级以上菜单出现的404问题</li>
                 <li>生产环境使用路由懒加载提升页面响应速度</li>
                 <li>任务屏蔽违规字符&参数忽略双引号中的逗号</li>
@@ -739,7 +748,7 @@
               width="100%"
             />
             <span style="display: inline-block; height: 30px; line-height: 30px"
-              >你可以请作者喝杯咖啡表示鼓励</span
+            >你可以请作者喝杯咖啡表示鼓励</span
             >
           </div>
         </el-card>
@@ -773,12 +782,14 @@ export default {
     font-size: 17.5px;
     border-left: 5px solid #eee;
   }
+
   hr {
     margin-top: 20px;
     margin-bottom: 20px;
     border: 0;
     border-top: 1px solid #eee;
   }
+
   .col-item {
     margin-bottom: 20px;
   }

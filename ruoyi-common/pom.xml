@@ -15,14 +15,14 @@
         <module>ruoyi-common-swagger</module>
         <module>ruoyi-common-security</module>
         <module>ruoyi-common-datascope</module>
-		<module>ruoyi-common-datasource</module>
+        <module>ruoyi-common-datasource</module>
     </modules>
 
     <artifactId>ruoyi-common</artifactId>
     <packaging>pom</packaging>
 
     <description>
-	    ruoyi-common通用模块
+        ruoyi-common通用模块
     </description>
 
 </project>
