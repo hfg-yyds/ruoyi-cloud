@@ -1,5 +1,6 @@
 package com.ruoyi.system;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.ruoyi.common.security.annotation.EnableCustomConfig;
@@ -15,6 +16,7 @@ import com.ruoyi.common.swagger.annotation.EnableCustomSwagger2;
 @EnableCustomSwagger2
 @EnableRyFeignClients
 @SpringBootApplication
+@MapperScan(basePackages = "com.ruoyi.system.mapper")
 public class RuoYiSystemApplication {
     public static void main(String[] args) {
         SpringApplication.run(RuoYiSystemApplication.class, args);

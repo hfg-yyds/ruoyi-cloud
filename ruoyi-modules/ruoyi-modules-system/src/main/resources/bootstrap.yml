@@ -10,6 +10,11 @@ spring:
   profiles:
     # 环境配置
     active: dev
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/ry-cloud?serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
   cloud:
     nacos:
       discovery:
@@ -23,3 +28,9 @@ spring:
         # 共享配置
         shared-configs:
           - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+
+mybatis:
+  type-aliases-package: com.ruoyi.system.domain,com.ruoyi.system.api.domain
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/system/*.xml
