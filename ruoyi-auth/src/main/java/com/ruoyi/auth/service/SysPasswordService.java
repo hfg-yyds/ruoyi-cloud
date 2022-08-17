@@ -18,12 +18,13 @@ import com.ruoyi.system.api.domain.SysUser;
  */
 @Component
 public class SysPasswordService {
+
     @Autowired
     private RedisService redisService;
 
-    private int maxRetryCount = CacheConstants.passwordMaxRetryCount;
+    private static final int maxRetryCount = CacheConstants.passwordMaxRetryCount;
 
-    private Long lockTime = CacheConstants.passwordLockTime;
+    private static final Long lockTime = CacheConstants.passwordLockTime;
 
     @Autowired
     private SysRecordLogService recordLogService;
@@ -47,7 +48,7 @@ public class SysPasswordService {
             retryCount = 0;
         }
 
-        if (retryCount >= Integer.valueOf(maxRetryCount).intValue()) {
+        if (retryCount >= maxRetryCount) {
             String errMsg = String.format("密码输入错误%s次，帐户锁定%s分钟", maxRetryCount, lockTime);
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, errMsg);
             throw new ServiceException(errMsg);
