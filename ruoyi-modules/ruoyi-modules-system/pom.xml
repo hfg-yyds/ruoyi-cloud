@@ -11,6 +11,7 @@
 
     <artifactId>ruoyi-modules-system</artifactId>
 
+    <packaging>jar</packaging>
     <description>
         ruoyi-modules-system系统模块
     </description>
@@ -54,24 +55,10 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
-        <!-- RuoYi Common DataSource -->
+<!--         RuoYi Common DataSource -->
         <dependency>
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-common-datasource</artifactId>
-            <exclusions>
-                <exclusion>
-                    <artifactId>guava</artifactId>
-                    <groupId>com.google.guava</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>druid</artifactId>
-                    <groupId>com.alibaba</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>fastjson</artifactId>
-                    <groupId>com.alibaba</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- RuoYi Common DataScope -->

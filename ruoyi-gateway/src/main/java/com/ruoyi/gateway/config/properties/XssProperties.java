@@ -41,4 +41,5 @@ public class XssProperties {
     public void setExcludeUrls(List<String> excludeUrls) {
         this.excludeUrls = excludeUrls;
     }
+
 }
