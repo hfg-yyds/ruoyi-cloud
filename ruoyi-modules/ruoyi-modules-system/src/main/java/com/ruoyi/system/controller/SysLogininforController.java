@@ -32,6 +32,7 @@ import com.ruoyi.system.service.ISysLogininforService;
 @RestController
 @RequestMapping("/logininfor")
 public class SysLogininforController extends BaseController {
+
     @Autowired
     private ISysLogininforService logininforService;
 
@@ -83,4 +84,5 @@ public class SysLogininforController extends BaseController {
     public AjaxResult add(@RequestBody SysLogininfor logininfor) {
         return toAjax(logininforService.insertLogininfor(logininfor));
     }
+
 }

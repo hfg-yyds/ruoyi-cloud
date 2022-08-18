@@ -1,7 +1,6 @@
 package com.ruoyi.system.service.impl;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -55,8 +54,8 @@ public class SysDeptServiceImpl implements ISysDeptService {
      */
     @Override
     public List<SysDept> buildDeptTree(List<SysDept> depts) {
-        List<SysDept> returnList = new ArrayList<SysDept>();
-        List<Long> tempList = new ArrayList<Long>();
+        List<SysDept> returnList = new ArrayList<>();
+        List<Long> tempList = new ArrayList<>();
         for (SysDept dept : depts) {
             tempList.add(dept.getDeptId());
         }
@@ -275,10 +274,8 @@ public class SysDeptServiceImpl implements ISysDeptService {
      * 得到子节点列表
      */
     private List<SysDept> getChildList(List<SysDept> list, SysDept t) {
-        List<SysDept> tlist = new ArrayList<SysDept>();
-        Iterator<SysDept> it = list.iterator();
-        while (it.hasNext()) {
-            SysDept n = (SysDept) it.next();
+        List<SysDept> tlist = new ArrayList<>();
+        for (SysDept n : list) {
             if (StringUtils.isNotNull(n.getParentId()) && n.getParentId().longValue() == t.getDeptId().longValue()) {
                 tlist.add(n);
             }
@@ -290,6 +287,6 @@ public class SysDeptServiceImpl implements ISysDeptService {
      * 判断是否有子节点
      */
     private boolean hasChild(List<SysDept> list, SysDept t) {
-        return getChildList(list, t).size() > 0 ? true : false;
+        return getChildList(list, t).size() > 0;
     }
 }
