@@ -36,7 +36,7 @@ public class BlackListUrlFilter extends AbstractGatewayFilterFactory<BlackListUr
     public static class Config {
         private List<String> blacklistUrl;
 
-        private List<Pattern> blacklistUrlPattern = new ArrayList<>();
+        private final List<Pattern> blacklistUrlPattern = new ArrayList<>();
 
         public boolean matchBlacklist(String url) {
             return !blacklistUrlPattern.isEmpty() && blacklistUrlPattern.stream().anyMatch(p -> p.matcher(url).find());

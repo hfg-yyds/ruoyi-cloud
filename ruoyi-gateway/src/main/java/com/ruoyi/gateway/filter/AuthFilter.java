@@ -1,7 +1,6 @@
 package com.ruoyi.gateway.filter;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -26,9 +25,9 @@ import reactor.core.publisher.Mono;
  *
  * @author ruoyi
  */
+@Slf4j
 @Component
 public class AuthFilter implements GlobalFilter, Ordered {
-    private static final Logger log = LoggerFactory.getLogger(AuthFilter.class);
 
     // 排除过滤的 uri 地址，nacos自行添加
     @Autowired
@@ -107,8 +106,10 @@ public class AuthFilter implements GlobalFilter, Ordered {
     private String getToken(ServerHttpRequest request) {
         String token = request.getHeaders().getFirst(TokenConstants.AUTHENTICATION);
         // 如果前端设置了令牌前缀，则裁剪掉前缀
-        if (StringUtils.isNotEmpty(token) && token.startsWith(TokenConstants.PREFIX)) {
-            token = token.replaceFirst(TokenConstants.PREFIX, StringUtils.EMPTY);
+        if (StringUtils.isNotEmpty(token)) {
+            if (token != null && token.startsWith(TokenConstants.PREFIX)) {
+                token = token.replaceFirst(TokenConstants.PREFIX, StringUtils.EMPTY);
+            }
         }
         return token;
     }
