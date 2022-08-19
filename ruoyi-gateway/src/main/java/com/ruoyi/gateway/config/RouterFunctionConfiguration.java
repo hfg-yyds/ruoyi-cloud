@@ -19,11 +19,12 @@ public class RouterFunctionConfiguration {
     @Autowired
     private ValidateCodeHandler validateCodeHandler;
 
-    @SuppressWarnings("rawtypes")
     @Bean
+    @SuppressWarnings("rawtypes")
     public RouterFunction routerFunction() {
         return RouterFunctions.route(
-                RequestPredicates.GET("/code").and(RequestPredicates.accept(MediaType.TEXT_PLAIN)),
-                validateCodeHandler);
+                RequestPredicates
+                        .GET("/code")
+                        .and(RequestPredicates.accept(MediaType.TEXT_PLAIN)), validateCodeHandler);
     }
 }

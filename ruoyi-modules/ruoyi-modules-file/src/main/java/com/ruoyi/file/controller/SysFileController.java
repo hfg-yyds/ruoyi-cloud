@@ -29,7 +29,7 @@ public class SysFileController {
     @PostMapping("upload")
     public R<SysFile> upload(MultipartFile file) {
         try {
-            // 上传并返回访问地址
+            //上传并返回访问地址
             String url = sysFileService.uploadFile(file);
             SysFile sysFile = new SysFile();
             sysFile.setName(FileUtils.getName(url));

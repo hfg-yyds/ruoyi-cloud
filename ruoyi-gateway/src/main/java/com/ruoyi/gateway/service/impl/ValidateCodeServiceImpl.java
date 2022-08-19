@@ -28,6 +28,7 @@ import com.ruoyi.gateway.service.ValidateCodeService;
  */
 @Service
 public class ValidateCodeServiceImpl implements ValidateCodeService {
+
     @Resource(name = "captchaProducer")
     private Producer captchaProducer;
 
@@ -75,6 +76,7 @@ public class ValidateCodeServiceImpl implements ValidateCodeService {
         // 转换流信息写出
         FastByteArrayOutputStream os = new FastByteArrayOutputStream();
         try {
+            assert image != null;
             ImageIO.write(image, "jpg", os);
         } catch (IOException e) {
             return AjaxResult.error(e.getMessage());

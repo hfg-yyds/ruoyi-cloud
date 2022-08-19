@@ -21,6 +21,7 @@ import com.ruoyi.system.api.model.LoginUser;
  */
 @Component
 public class SysLoginService {
+
     @Autowired
     private RemoteUserService remoteUserService;
 

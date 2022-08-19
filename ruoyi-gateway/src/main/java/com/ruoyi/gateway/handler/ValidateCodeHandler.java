@@ -21,6 +21,7 @@ import reactor.core.publisher.Mono;
  */
 @Component
 public class ValidateCodeHandler implements HandlerFunction<ServerResponse> {
+
     @Autowired
     private ValidateCodeService validateCodeService;
 
@@ -34,4 +35,5 @@ public class ValidateCodeHandler implements HandlerFunction<ServerResponse> {
         }
         return ServerResponse.status(HttpStatus.OK).body(BodyInserters.fromValue(ajax));
     }
+
 }

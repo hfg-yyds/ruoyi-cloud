@@ -18,6 +18,7 @@ import springfox.documentation.swagger.web.UiConfigurationBuilder;
 @RestController
 @RequestMapping("/swagger-resources")
 public class SwaggerHandler {
+
     @Autowired(required = false)
     private SecurityConfiguration securityConfiguration;
 

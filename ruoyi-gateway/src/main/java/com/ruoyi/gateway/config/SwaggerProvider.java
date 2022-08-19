@@ -21,6 +21,7 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
  */
 @Component
 public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigurer {
+
     /**
      * Swagger2默认的url后缀
      */

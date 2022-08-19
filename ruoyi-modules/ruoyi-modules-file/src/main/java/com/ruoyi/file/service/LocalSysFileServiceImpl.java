@@ -1,5 +1,6 @@
 package com.ruoyi.file.service;
 
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
@@ -37,12 +38,11 @@ public class LocalSysFileServiceImpl implements ISysFileService {
      *
      * @param file 上传的文件
      * @return 访问地址
-     * @throws Exception
      */
+    @SneakyThrows
     @Override
-    public String uploadFile(MultipartFile file) throws Exception {
+    public String uploadFile(MultipartFile file) {
         String name = FileUploadUtils.upload(localFilePath, file);
-        String url = domain + localFilePrefix + name;
-        return url;
+        return domain + localFilePrefix + name;
     }
 }
