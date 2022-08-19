@@ -3,9 +3,9 @@ package com.ruoyi.common.mq.core;
 import com.ruoyi.common.mq.config.RocketMqProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.DefaultMQProducer;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 
 /**
  * <p>
@@ -25,7 +25,7 @@ public abstract class AbstractDefaultProducer implements IProducer {
     /**
      * RocketMq配置
      */
-    @Autowired
+    @Resource
     private RocketMqProperties rocketMqProperties;
 
     /**

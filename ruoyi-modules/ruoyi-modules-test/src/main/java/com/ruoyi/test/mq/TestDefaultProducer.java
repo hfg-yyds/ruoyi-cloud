@@ -1,8 +1,9 @@
-package com.ruoyi.common.mq;
+package com.ruoyi.test.mq;
 
 import com.ruoyi.common.mq.annotation.MessageBean;
 import com.ruoyi.common.mq.core.AbstractDefaultProducer;
-import com.ruoyi.common.mq.enums.MessageConsumer;
+import com.ruoyi.test.enums.ConsumerEnums;
+import com.ruoyi.test.enums.ProducerEnums;
 import org.apache.rocketmq.common.message.Message;
 
 /**
@@ -22,7 +23,7 @@ public class TestDefaultProducer extends AbstractDefaultProducer {
 
     @Override
     protected String getServiceId() {
-        return MessageConsumer.TEST.getCode();
+        return ProducerEnums.PRODUCER_TEST.getCode();
     }
 
     /**

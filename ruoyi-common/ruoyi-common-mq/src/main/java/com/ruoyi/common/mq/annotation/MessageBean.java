@@ -7,7 +7,7 @@ import java.lang.annotation.*;
 
 /**
  * <p>
- *
+ *   消息队列生产者、消费者标识
  * </p>
  * Copyright @2017-2022
  *
@@ -23,7 +23,9 @@ import java.lang.annotation.*;
 @Component
 public @interface MessageBean {
 
-
+    /**
+     * 组件Value
+     */
     @AliasFor(annotation = Component.class)
     String value() default "";
 

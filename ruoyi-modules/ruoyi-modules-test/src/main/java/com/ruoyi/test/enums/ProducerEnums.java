@@ -1,4 +1,4 @@
-package com.ruoyi.common.mq.enums;
+package com.ruoyi.test.enums;
 
 import lombok.Getter;
 
@@ -9,24 +9,24 @@ import lombok.Getter;
  * Copyright @2017-2022
  *
  * @moduleName: ruoyi
- * @className: com.ruoyi.common.mq.enums.MessageConsumer
+ * @className: com.ruoyi.test.enums.ProducerEnums
  * @author: 韩福贵
  * @date: 2022-08-19
  * @version: 1.0
  */
 @Getter
-public enum MessageConsumer {
+public enum ProducerEnums {
 
-    TEST("1","2");
+    PRODUCER_TEST("1","2"),
 
     ;
+
     private final String code;
 
     private final String desc;
 
-    MessageConsumer(String code, String desc) {
+    ProducerEnums(String code, String desc) {
         this.code = code;
         this.desc = desc;
     }
-
 }
