@@ -14,7 +14,7 @@ import com.ruoyi.common.log.enums.OperatorType;
  *
  * @author ruoyi
  */
-@Target({ElementType.PARAMETER, ElementType.METHOD,ElementType.MODULE})
+@Target({ElementType.PARAMETER, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface Log {

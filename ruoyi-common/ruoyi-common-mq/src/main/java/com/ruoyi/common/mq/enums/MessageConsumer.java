@@ -1,5 +1,7 @@
 package com.ruoyi.common.mq.enums;
 
+import lombok.Getter;
+
 /**
  * <p>
  *
@@ -12,6 +14,19 @@ package com.ruoyi.common.mq.enums;
  * @date: 2022-08-19
  * @version: 1.0
  */
+@Getter
 public enum MessageConsumer {
+
+    TEST("1","2");
+
+    ;
+    private final String code;
+
+    private final String desc;
+
+    MessageConsumer(String code, String desc) {
+        this.code = code;
+        this.desc = desc;
+    }
 
 }

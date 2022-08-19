@@ -10,8 +10,7 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
@@ -46,6 +45,16 @@ public class LogAspect {
     @Autowired
     private AsyncLogService asyncLogService;
 
+    @Before(value = "@annotation(controllerLog)")
+    public void doBefore(JoinPoint joinPoint,Log controllerLog) {
+        addRunEmvs(joinPoint);
+    }
+
+    private void addRunEmvs(JoinPoint joinPoint) {
+        Object[] args = joinPoint.getArgs();
+        RunEnvironment.setHeader(args);
+    }
+
     /**
      * 处理完请求后执行
      *
@@ -54,6 +63,9 @@ public class LogAspect {
     @AfterReturning(pointcut = "@annotation(controllerLog)", returning = "jsonResult")
     public void doAfterReturning(JoinPoint joinPoint, Log controllerLog, Object jsonResult) {
         handleLog(joinPoint, controllerLog, null, jsonResult);
+
+        //结果返回之后  清理线程变量
+        RunEnvironment.remove();
     }
 
     /**
@@ -109,7 +121,7 @@ public class LogAspect {
      * @param log     日志
      * @param operLog 操作日志
      */
-    public void getControllerMethodDescription(JoinPoint joinPoint, Log log, SysOperLog operLog, Object jsonResult) throws Exception {
+    public void getControllerMethodDescription(JoinPoint joinPoint, Log log, SysOperLog operLog, Object jsonResult) {
         // 设置action动作
         operLog.setBusinessType(log.businessType().ordinal());
         // 设置标题
@@ -131,9 +143,8 @@ public class LogAspect {
      * 获取请求的参数，放到log中
      *
      * @param operLog 操作日志
-     * @throws Exception 异常
      */
-    private void setRequestValue(JoinPoint joinPoint, SysOperLog operLog) throws Exception {
+    private void setRequestValue(JoinPoint joinPoint, SysOperLog operLog) {
         String requestMethod = operLog.getRequestMethod();
         if (HttpMethod.PUT.name().equals(requestMethod) || HttpMethod.POST.name().equals(requestMethod)) {
             String params = argsArrayToString(joinPoint.getArgs());
@@ -145,19 +156,20 @@ public class LogAspect {
      * 参数拼装
      */
     private String argsArrayToString(Object[] paramsArray) {
-        String params = "";
+        StringBuilder params = new StringBuilder();
         if (paramsArray != null && paramsArray.length > 0) {
             for (Object o : paramsArray) {
                 if (StringUtils.isNotNull(o) && !isFilterObject(o)) {
                     try {
                         String jsonObj = JSON.toJSONString(o, excludePropertyPreFilter());
-                        params += jsonObj.toString() + " ";
+                        params.append(jsonObj).append(" ");
                     } catch (Exception e) {
+                        log.error(e.getMessage());
                     }
                 }
             }
         }
-        return params.trim();
+        return params.toString().trim();
     }
 
     /**
