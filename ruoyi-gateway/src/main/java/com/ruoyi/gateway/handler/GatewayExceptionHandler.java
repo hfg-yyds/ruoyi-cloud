@@ -20,6 +20,7 @@ import reactor.core.publisher.Mono;
 @Order(-1)
 @Configuration
 public class GatewayExceptionHandler implements ErrorWebExceptionHandler {
+
     private static final Logger log = LoggerFactory.getLogger(GatewayExceptionHandler.class);
 
     @Override

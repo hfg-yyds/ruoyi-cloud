@@ -63,6 +63,8 @@ public class FileUploadUtils {
     public static String upload(String baseDir, MultipartFile file, String[] allowedExtension)
             throws FileSizeLimitExceededException, IOException, FileNameLengthLimitExceededException,
             InvalidExtensionException {
+
+        //判断文件名字是否超长
         int fileNamelength = Objects.requireNonNull(file.getOriginalFilename()).length();
         if (fileNamelength > FileUploadUtils.DEFAULT_FILE_NAME_LENGTH) {
             throw new FileNameLengthLimitExceededException(FileUploadUtils.DEFAULT_FILE_NAME_LENGTH);
@@ -82,7 +84,8 @@ public class FileUploadUtils {
      */
     public static String extractFilename(MultipartFile file) {
         return StringUtils.format("{}/{}_{}.{}", DateUtils.datePath(),
-                FilenameUtils.getBaseName(file.getOriginalFilename()), Seq.getId(Seq.uploadSeqType), FileTypeUtils.getExtension(file));
+                FilenameUtils.getBaseName(file.getOriginalFilename()),
+                Seq.getId(Seq.uploadSeqType), FileTypeUtils.getExtension(file));
     }
 
     private static File getAbsoluteFile(String uploadDir, String fileName) {

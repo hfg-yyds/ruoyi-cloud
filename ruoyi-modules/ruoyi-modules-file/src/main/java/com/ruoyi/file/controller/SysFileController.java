@@ -1,8 +1,8 @@
 package com.ruoyi.file.controller;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,9 +16,9 @@ import com.ruoyi.system.api.domain.SysFile;
  *
  * @author ruoyi
  */
+@Slf4j
 @RestController
 public class SysFileController {
-    private static final Logger log = LoggerFactory.getLogger(SysFileController.class);
 
     @Autowired
     private ISysFileService sysFileService;
@@ -31,13 +31,22 @@ public class SysFileController {
         try {
             //上传并返回访问地址
             String url = sysFileService.uploadFile(file);
-            SysFile sysFile = new SysFile();
-            sysFile.setName(FileUtils.getName(url));
-            sysFile.setUrl(url);
-            return R.ok(sysFile);
+            return R.ok(SysFile.builder()
+                               .name(FileUtils.getName(url))
+                               .url(url).build());
         } catch (Exception e) {
             log.error("上传文件失败", e);
             return R.fail(e.getMessage());
         }
+
     }
+
+    /**
+     * 根据文件名字与地址
+     */
+    @DeleteMapping("/deleteFile")
+    public void deleteFile() {
+
+    }
+
 }

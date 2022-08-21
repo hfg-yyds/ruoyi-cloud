@@ -1,5 +1,9 @@
 package com.ruoyi.system.api.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -8,6 +12,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  *
  * @author ruoyi
  */
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class SysFile {
     /**
      * 文件名称
@@ -19,22 +27,6 @@ public class SysFile {
      */
     private String url;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     @Override
     public String toString() {
         return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE)
@@ -42,4 +34,5 @@ public class SysFile {
                 .append("url", getUrl())
                 .toString();
     }
+
 }
