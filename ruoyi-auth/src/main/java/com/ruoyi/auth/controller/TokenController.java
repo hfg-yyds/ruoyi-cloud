@@ -18,6 +18,8 @@ import com.ruoyi.common.security.service.TokenService;
 import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.model.LoginUser;
 
+import java.util.Map;
+
 /**
  * 登录认证控制器
  *
@@ -32,14 +34,24 @@ public class TokenController {
     @Autowired
     private SysLoginService sysLoginService;
 
+    /**
+     * 登录
+     * @param form 用户登录对象
+     * @return token令牌以及token过期时间
+     */
     @PostMapping("login")
-    public R<?> login(@RequestBody LoginBody form) {
+    public R<Map<String,Object>> login(@RequestBody LoginBody form) {
         // 用户登录
         LoginUser userInfo = sysLoginService.login(form.getUsername(), form.getPassword());
         // 获取登录token
         return R.ok(tokenService.createToken(userInfo));
     }
 
+    /**
+     * 用户登出
+     * @param request HttpServletRequest
+     * @return R
+     */
     @DeleteMapping("logout")
     public R<?> logout(HttpServletRequest request) {
         String token = SecurityUtils.getToken(request);
@@ -53,21 +65,32 @@ public class TokenController {
         return R.ok();
     }
 
+    /**
+     * 刷新令牌
+     * @param request HttpServletRequest
+     * @return R
+     */
     @PostMapping("refresh")
     public R<?> refresh(HttpServletRequest request) {
         LoginUser loginUser = tokenService.getLoginUser(request);
         if (StringUtils.isNotNull(loginUser)) {
-            // 刷新令牌有效期
+            //刷新令牌有效期
             tokenService.refreshToken(loginUser);
             return R.ok();
         }
         return R.ok();
     }
 
+    /**
+     * 用户注册
+     * @param registerBody
+     * @return
+     */
     @PostMapping("register")
     public R<?> register(@RequestBody RegisterBody registerBody) {
         // 用户注册
         sysLoginService.register(registerBody.getUsername(), registerBody.getPassword());
         return R.ok();
     }
+
 }

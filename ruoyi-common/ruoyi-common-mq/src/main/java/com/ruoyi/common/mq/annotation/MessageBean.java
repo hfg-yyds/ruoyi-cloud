@@ -17,10 +17,10 @@ import java.lang.annotation.*;
  * @date: 2022-08-19
  * @version: 1.0
  */
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Component
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
 public @interface MessageBean {
 
     /**

@@ -20,6 +20,7 @@ import com.ruoyi.job.util.CronUtils;
  * @author ruoyi
  */
 public class SysJob extends BaseEntity {
+
     private static final long serialVersionUID = 1L;
 
     /**

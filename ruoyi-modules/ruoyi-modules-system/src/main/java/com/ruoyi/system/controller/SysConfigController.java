@@ -33,6 +33,7 @@ import com.ruoyi.system.service.ISysConfigService;
 @RestController
 @RequestMapping("/config")
 public class SysConfigController extends BaseController {
+
     @Autowired
     private ISysConfigService configService;
 

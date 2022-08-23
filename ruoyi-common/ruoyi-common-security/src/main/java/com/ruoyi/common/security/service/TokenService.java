@@ -57,7 +57,7 @@ public class TokenService {
         claimsMap.put(SecurityConstants.DETAILS_USER_ID, userId);
         claimsMap.put(SecurityConstants.DETAILS_USERNAME, userName);
 
-        // 接口返回信息
+        //接口返回信息
         Map<String, Object> rspMap = new HashMap<>();
         rspMap.put("access_token", JwtUtils.createToken(claimsMap));
         rspMap.put("expires_in", expireTime);
@@ -142,7 +142,7 @@ public class TokenService {
     public void refreshToken(LoginUser loginUser) {
         loginUser.setLoginTime(System.currentTimeMillis());
         loginUser.setExpireTime(loginUser.getLoginTime() + expireTime * MILLIS_MINUTE);
-        // 根据uuid将loginUser缓存
+        //根据uuid将loginUser缓存
         String userKey = getTokenKey(loginUser.getToken());
         redisService.setCacheObject(userKey, loginUser, expireTime, TimeUnit.MINUTES);
     }
@@ -150,4 +150,5 @@ public class TokenService {
     private String getTokenKey(String token) {
         return ACCESS_TOKEN + token;
     }
+
 }

@@ -28,6 +28,7 @@ import com.ruoyi.job.service.ISysJobLogService;
 @RestController
 @RequestMapping("/job/log")
 public class SysJobLogController extends BaseController {
+
     @Autowired
     private ISysJobLogService jobLogService;
 
@@ -50,7 +51,7 @@ public class SysJobLogController extends BaseController {
     @PostMapping("/export")
     public void export(HttpServletResponse response, SysJobLog sysJobLog) {
         List<SysJobLog> list = jobLogService.selectJobLogList(sysJobLog);
-        ExcelUtil<SysJobLog> util = new ExcelUtil<SysJobLog>(SysJobLog.class);
+        ExcelUtil<SysJobLog> util = new ExcelUtil<>(SysJobLog.class);
         util.exportExcel(response, list, "调度日志");
     }
 
@@ -59,8 +60,8 @@ public class SysJobLogController extends BaseController {
      */
     @RequiresPermissions("monitor:job:query")
     @GetMapping(value = "/{configId}")
-    public AjaxResult getInfo(@PathVariable Long jobLogId) {
-        return AjaxResult.success(jobLogService.selectJobLogById(jobLogId));
+    public AjaxResult getInfo(@PathVariable Long configId) {
+        return AjaxResult.success(jobLogService.selectJobLogById(configId));
     }
 
     /**

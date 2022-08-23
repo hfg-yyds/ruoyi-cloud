@@ -30,6 +30,7 @@ import com.ruoyi.system.service.ISysOperLogService;
 @RestController
 @RequestMapping("/operlog")
 public class SysOperlogController extends BaseController {
+
     @Autowired
     private ISysOperLogService operLogService;
 

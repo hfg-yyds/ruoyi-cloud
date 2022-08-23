@@ -2,7 +2,6 @@ package com.ruoyi.test.mq;
 
 import com.ruoyi.common.mq.annotation.MessageBean;
 import com.ruoyi.common.mq.core.AbstractDefaultProducer;
-import com.ruoyi.test.enums.ConsumerEnums;
 import com.ruoyi.test.enums.ProducerEnums;
 import org.apache.rocketmq.common.message.Message;
 

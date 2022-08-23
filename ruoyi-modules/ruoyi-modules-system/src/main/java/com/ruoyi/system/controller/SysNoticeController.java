@@ -30,6 +30,7 @@ import com.ruoyi.system.service.ISysNoticeService;
 @RestController
 @RequestMapping("/notice")
 public class SysNoticeController extends BaseController {
+
     @Autowired
     private ISysNoticeService noticeService;
 

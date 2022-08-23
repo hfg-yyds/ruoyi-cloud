@@ -15,6 +15,7 @@ import com.ruoyi.gen.mapper.GenTableColumnMapper;
  */
 @Service
 public class GenTableColumnServiceImpl implements IGenTableColumnService {
+
     @Autowired
     private GenTableColumnMapper genTableColumnMapper;
 

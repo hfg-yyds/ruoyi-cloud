@@ -2,7 +2,7 @@ package com.ruoyi.common.mq.core;
 
 /**
  * <p>
- *  生产者顶级接口
+ *      生产者顶级接口
  * </p>
  * Copyright @2017-2022
  *
