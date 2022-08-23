@@ -1,15 +1,23 @@
 package com.ruoyi.common.core.domain;
 
 import java.io.Serializable;
+import java.util.function.Supplier;
 
 import com.ruoyi.common.core.constant.Constants;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 响应信息主体
  *
  * @author ruoyi
  */
+@Slf4j
+@Getter
+@Setter
 public class R<T> implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -22,10 +30,18 @@ public class R<T> implements Serializable {
      */
     public static final int FAIL = Constants.FAIL;
 
+    /**
+     * 返回码
+     */
     private int code;
 
+    /**
+     * 返回信息
+     */
     private String msg;
-
+    /**
+     * 返回数据
+     */
     private T data;
 
     public static <T> R<T> ok() {
@@ -60,6 +76,31 @@ public class R<T> implements Serializable {
         return restResult(null, code, msg);
     }
 
+    /**
+     * 封装的返回
+     * @param runnable 函数式接口
+     * @param <T> 返回类型
+     * @return T
+     */
+    public static <T> R<T> run(Runnable runnable) {
+        try {
+            runnable.run();
+            return ok();
+        }catch (Exception e) {
+            log.info(e.getMessage());
+            return fail();
+        }
+    }
+
+    public static <T> R<T> run(Supplier<T> supplier) {
+        try {
+            return ok(supplier.get());
+        }catch (Exception e) {
+            log.info(e.getMessage());
+            return fail(e.getMessage());
+        }
+    }
+
     private static <T> R<T> restResult(T data, int code, String msg) {
         R<T> apiResult = new R<>();
         apiResult.setCode(code);
@@ -68,27 +109,4 @@ public class R<T> implements Serializable {
         return apiResult;
     }
 
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public T getData() {
-        return data;
-    }
-
-    public void setData(T data) {
-        this.data = data;
-    }
 }

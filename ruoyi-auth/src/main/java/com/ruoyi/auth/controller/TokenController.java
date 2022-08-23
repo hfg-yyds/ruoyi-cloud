@@ -19,7 +19,7 @@ import com.ruoyi.common.security.utils.SecurityUtils;
 import com.ruoyi.system.api.model.LoginUser;
 
 /**
- * token 控制
+ * 登录认证控制器
  *
  * @author ruoyi
  */

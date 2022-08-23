@@ -21,6 +21,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletResponse;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RegExUtils;
 import org.apache.commons.lang3.reflect.FieldUtils;
@@ -49,8 +50,6 @@ import org.apache.poi.util.IOUtils;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
 import org.apache.poi.xssf.usermodel.XSSFDataValidation;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.ruoyi.common.core.annotation.Excel;
 import com.ruoyi.common.core.annotation.Excel.ColumnType;
 import com.ruoyi.common.core.annotation.Excel.Type;
@@ -67,8 +66,8 @@ import com.ruoyi.common.core.utils.reflect.ReflectUtils;
  *
  * @author ruoyi
  */
+@Slf4j
 public class ExcelUtil<T> {
-    private static final Logger log = LoggerFactory.getLogger(ExcelUtil.class);
 
     public static final String FORMULA_REGEX_STR = "=|-|\\+|@";
 
@@ -152,7 +151,7 @@ public class ExcelUtil<T> {
     /**
      * 统计列表
      */
-    private Map<Integer, Double> statistics = new HashMap<Integer, Double>();
+    private final Map<Integer, Double> statistics = new HashMap<>();
 
     /**
      * 数字格式
@@ -177,15 +176,21 @@ public class ExcelUtil<T> {
      * 隐藏Excel中列属性
      *
      * @param fields 列属性名 示例[单个"name"/多个"id","name"]
-     * @throws Exception
      */
     public void hideColumn(String... fields) {
         this.excludeFields = fields;
     }
 
+    /**
+     * 初始化
+     * @param list list
+     * @param sheetName sheetName
+     * @param title title
+     * @param type type
+     */
     public void init(List<T> list, String sheetName, String title, Type type) {
         if (list == null) {
-            list = new ArrayList<T>();
+            list = new ArrayList<>();
         }
         this.list = list;
         this.sheetName = sheetName;
@@ -274,7 +279,7 @@ public class ExcelUtil<T> {
     public List<T> importExcel(String sheetName, InputStream is, int titleNum) throws Exception {
         this.type = Type.IMPORT;
         this.wb = WorkbookFactory.create(is);
-        List<T> list = new ArrayList<T>();
+        List<T> list = new ArrayList<>();
         // 如果指定sheet名,则取指定sheet中的内容 否则默认指向第1个sheet
         Sheet sheet = StringUtils.isNotEmpty(sheetName) ? wb.getSheet(sheetName) : wb.getSheetAt(0);
         if (sheet == null) {
@@ -286,7 +291,7 @@ public class ExcelUtil<T> {
 
         if (rows > 0) {
             // 定义一个map用于存放excel列的序号和field.
-            Map<String, Integer> cellMap = new HashMap<String, Integer>();
+            Map<String, Integer> cellMap = new HashMap<>();
             // 获取表头
             Row heard = sheet.getRow(titleNum);
             for (int i = 0; i < heard.getPhysicalNumberOfCells(); i++) {
@@ -300,7 +305,7 @@ public class ExcelUtil<T> {
             }
             // 有数据时才处理 得到类的所有field.
             List<Object[]> fields = this.getFields();
-            Map<Integer, Object[]> fieldsMap = new HashMap<Integer, Object[]>();
+            Map<Integer, Object[]> fieldsMap = new HashMap<>();
             for (Object[] objects : fields) {
                 Excel attr = (Excel) objects[1];
                 Integer column = cellMap.get(attr.name());
@@ -381,7 +386,6 @@ public class ExcelUtil<T> {
      * @param response  返回数据
      * @param list      导出数据集合
      * @param sheetName 工作表的名称
-     * @return 结果
      */
     public void exportExcel(HttpServletResponse response, List<T> list, String sheetName) {
         exportExcel(response, list, sheetName, StringUtils.EMPTY);
@@ -1064,7 +1068,7 @@ public class ExcelUtil<T> {
      */
     public Object getCellValue(Row row, int column) {
         if (row == null) {
-            return row;
+            return null;
         }
         Object val = "";
         try {

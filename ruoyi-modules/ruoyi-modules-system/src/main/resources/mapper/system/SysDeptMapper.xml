@@ -167,16 +167,16 @@
     </update>
 
     <update id="updateDeptStatusNormal" parameterType="Long">
-        update sys_dept set status = '0' where dept_id in
+        UPDATE SYS_DEPT SET STATUS = '0' WHERE DEPT_ID IN
         <foreach collection="array" item="deptId" open="(" separator="," close=")">
             #{deptId}
         </foreach>
     </update>
 
     <delete id="deleteDeptById" parameterType="Long">
-        update sys_dept
-        set del_flag = '2'
-        where dept_id = #{deptId}
+        UPDATE SYS_DEPT
+        SET del_flag = '2'
+        WHERE DEPT_ID = #{deptId}
     </delete>
 
 </mapper> 

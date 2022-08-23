@@ -36,6 +36,7 @@ import com.ruoyi.system.service.ISysUserService;
 @RestController
 @RequestMapping("/role")
 public class SysRoleController extends BaseController {
+
     @Autowired
     private ISysRoleService roleService;
 

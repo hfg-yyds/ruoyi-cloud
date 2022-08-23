@@ -52,13 +52,13 @@ public class TokenService {
         refreshToken(loginUser);
 
         // Jwt存储信息
-        Map<String, Object> claimsMap = new HashMap<String, Object>();
+        Map<String, Object> claimsMap = new HashMap<>();
         claimsMap.put(SecurityConstants.USER_KEY, token);
         claimsMap.put(SecurityConstants.DETAILS_USER_ID, userId);
         claimsMap.put(SecurityConstants.DETAILS_USERNAME, userName);
 
         // 接口返回信息
-        Map<String, Object> rspMap = new HashMap<String, Object>();
+        Map<String, Object> rspMap = new HashMap<>();
         rspMap.put("access_token", JwtUtils.createToken(claimsMap));
         rspMap.put("expires_in", expireTime);
         return rspMap;

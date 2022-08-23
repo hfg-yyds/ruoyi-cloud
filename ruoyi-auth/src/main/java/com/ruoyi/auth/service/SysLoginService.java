@@ -32,7 +32,10 @@ public class SysLoginService {
     private SysRecordLogService recordLogService;
 
     /**
-     * 登录
+     * 用户登录
+     * @param username 用户名
+     * @param password 密码
+     * @return LoginUser
      */
     public LoginUser login(String username, String password) {
         // 用户名或密码为空 错误
@@ -59,20 +62,23 @@ public class SysLoginService {
             throw new ServiceException(userResult.getMsg());
         }
 
-        if (StringUtils.isNull(userResult) || StringUtils.isNull(userResult.getData())) {
+        if (StringUtils.isNull(userResult.getData())) {
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "登录用户不存在");
             throw new ServiceException("登录用户：" + username + " 不存在");
         }
+
         LoginUser userInfo = userResult.getData();
         SysUser user = userResult.getData().getSysUser();
         if (UserStatus.DELETED.getCode().equals(user.getDelFlag())) {
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "对不起，您的账号已被删除");
             throw new ServiceException("对不起，您的账号：" + username + " 已被删除");
         }
+
         if (UserStatus.DISABLE.getCode().equals(user.getStatus())) {
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户已停用，请联系管理员");
             throw new ServiceException("对不起，您的账号：" + username + " 已停用");
         }
+
         passwordService.validate(user, password);
         recordLogService.recordLogininfor(username, Constants.LOGIN_SUCCESS, "登录成功");
         return userInfo;

@@ -32,6 +32,7 @@ import com.ruoyi.system.service.ISysUserOnlineService;
 @RestController
 @RequestMapping("/online")
 public class SysUserOnlineController extends BaseController {
+
     @Autowired
     private ISysUserOnlineService userOnlineService;
 
@@ -76,4 +77,5 @@ public class SysUserOnlineController extends BaseController {
         redisService.deleteObject(CacheConstants.LOGIN_TOKEN_KEY + tokenId);
         return AjaxResult.success();
     }
+
 }

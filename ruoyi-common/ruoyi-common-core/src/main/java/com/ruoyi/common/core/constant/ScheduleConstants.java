@@ -6,6 +6,7 @@ package com.ruoyi.common.core.constant;
  * @author ruoyi
  */
 public class ScheduleConstants {
+
     public static final String TASK_CLASS_NAME = "TASK_CLASS_NAME";
 
     /**
@@ -43,9 +44,9 @@ public class ScheduleConstants {
          */
         PAUSE("1");
 
-        private String value;
+        private final String value;
 
-        private Status(String value) {
+        Status(String value) {
             this.value = value;
         }
 
