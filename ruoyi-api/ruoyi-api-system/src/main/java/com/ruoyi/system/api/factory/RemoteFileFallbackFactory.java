@@ -1,7 +1,6 @@
 package com.ruoyi.system.api.factory;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 import com.ruoyi.common.core.domain.R;
@@ -12,9 +11,9 @@ import com.ruoyi.system.api.RemoteFileService;
  *
  * @author ruoyi
  */
+@Slf4j
 @Component
 public class RemoteFileFallbackFactory implements FallbackFactory<RemoteFileService> {
-    private static final Logger log = LoggerFactory.getLogger(RemoteFileFallbackFactory.class);
 
     @Override
     public RemoteFileService create(Throwable throwable) {

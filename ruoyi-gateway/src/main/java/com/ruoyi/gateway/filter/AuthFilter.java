@@ -36,14 +36,13 @@ public class AuthFilter implements GlobalFilter, Ordered {
     @Autowired
     private RedisService redisService;
 
-
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         ServerHttpRequest request = exchange.getRequest();
         ServerHttpRequest.Builder mutate = request.mutate();
 
         String url = request.getURI().getPath();
-        // 跳过不需要验证的路径
+        //跳过不需要验证的路径 --白名单直接访问
         if (StringUtils.matches(url, ignoreWhite.getWhites())) {
             return chain.filter(exchange);
         }

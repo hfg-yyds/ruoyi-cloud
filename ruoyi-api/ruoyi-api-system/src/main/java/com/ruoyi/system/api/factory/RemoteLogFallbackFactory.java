@@ -1,7 +1,6 @@
 package com.ruoyi.system.api.factory;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.openfeign.FallbackFactory;
 import org.springframework.stereotype.Component;
 import com.ruoyi.common.core.domain.R;
@@ -14,9 +13,9 @@ import com.ruoyi.system.api.domain.SysOperLog;
  *
  * @author ruoyi
  */
+@Slf4j
 @Component
 public class RemoteLogFallbackFactory implements FallbackFactory<RemoteLogService> {
-    private static final Logger log = LoggerFactory.getLogger(RemoteLogFallbackFactory.class);
 
     @Override
     public RemoteLogService create(Throwable throwable) {
@@ -24,14 +23,13 @@ public class RemoteLogFallbackFactory implements FallbackFactory<RemoteLogServic
         return new RemoteLogService() {
             @Override
             public R<Boolean> saveLog(SysOperLog sysOperLog, String source) {
-                return null;
+                return R.fail("保存日志失败");
             }
-
             @Override
             public R<Boolean> saveLogininfor(SysLogininfor sysLogininfor, String source) {
-                return null;
+                return R.fail("保存访问记录s失败");
             }
         };
-
     }
+
 }

@@ -15,6 +15,9 @@ import springfox.documentation.swagger.web.SwaggerResourcesProvider;
 import springfox.documentation.swagger.web.UiConfiguration;
 import springfox.documentation.swagger.web.UiConfigurationBuilder;
 
+/**
+ * SwaggerHandler
+ */
 @RestController
 @RequestMapping("/swagger-resources")
 public class SwaggerHandler {

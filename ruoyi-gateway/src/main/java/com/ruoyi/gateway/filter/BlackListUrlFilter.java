@@ -16,6 +16,7 @@ import com.ruoyi.common.core.utils.ServletUtils;
  */
 @Component
 public class BlackListUrlFilter extends AbstractGatewayFilterFactory<BlackListUrlFilter.Config> {
+
     @Override
     public GatewayFilter apply(Config config) {
         return (exchange, chain) -> {
@@ -34,6 +35,7 @@ public class BlackListUrlFilter extends AbstractGatewayFilterFactory<BlackListUr
     }
 
     public static class Config {
+
         private List<String> blacklistUrl;
 
         private final List<Pattern> blacklistUrlPattern = new ArrayList<>();

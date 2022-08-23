@@ -83,12 +83,12 @@ public class TokenController {
 
     /**
      * 用户注册
-     * @param registerBody
-     * @return
+     * @param registerBody  registerBody
+     * @return R
      */
     @PostMapping("register")
     public R<?> register(@RequestBody RegisterBody registerBody) {
-        // 用户注册
+        //用户注册
         sysLoginService.register(registerBody.getUsername(), registerBody.getPassword());
         return R.ok();
     }

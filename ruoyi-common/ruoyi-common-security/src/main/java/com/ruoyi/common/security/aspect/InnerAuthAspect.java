@@ -19,6 +19,14 @@ import com.ruoyi.common.security.annotation.InnerAuth;
 @Aspect
 @Component
 public class InnerAuthAspect implements Ordered {
+
+    /**
+     * 内部认证注解切面
+     * @param point 切点
+     * @param innerAuth 内部认证注解注解
+     * @return obj
+     * @throws Throwable e
+     */
     @Around("@annotation(innerAuth)")
     public Object innerAround(ProceedingJoinPoint point, InnerAuth innerAuth) throws Throwable {
         String source = ServletUtils.getRequest().getHeader(SecurityConstants.FROM_SOURCE);

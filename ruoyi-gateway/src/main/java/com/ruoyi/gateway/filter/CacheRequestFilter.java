@@ -3,6 +3,8 @@ package com.ruoyi.gateway.filter;
 import java.util.Collections;
 import java.util.List;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.OrderedGatewayFilter;
@@ -20,6 +22,7 @@ import reactor.core.publisher.Mono;
  */
 @Component
 public class CacheRequestFilter extends AbstractGatewayFilterFactory<CacheRequestFilter.Config> {
+
     public CacheRequestFilter() {
         super(Config.class);
     }
@@ -61,15 +64,10 @@ public class CacheRequestFilter extends AbstractGatewayFilterFactory<CacheReques
         return Collections.singletonList("order");
     }
 
+    @Getter
+    @Setter
     static class Config {
         private Integer order;
-
-        public Integer getOrder() {
-            return order;
-        }
-
-        public void setOrder(Integer order) {
-            this.order = order;
-        }
     }
+
 }

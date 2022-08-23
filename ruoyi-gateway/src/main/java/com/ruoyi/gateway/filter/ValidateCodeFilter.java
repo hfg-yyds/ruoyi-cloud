@@ -26,6 +26,7 @@ import reactor.core.publisher.Flux;
  */
 @Component
 public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object> {
+
     private final static String[] VALIDATE_URL = new String[]{"/auth/login", "/auth/register"};
 
     @Autowired
@@ -59,6 +60,11 @@ public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object> {
         };
     }
 
+    /**
+     * 获取验证码字符串
+     * @param serverHttpRequest serverHttpRequest
+     * @return String
+     */
     private String resolveBodyFromRequest(ServerHttpRequest serverHttpRequest) {
         // 获取请求体
         Flux<DataBuffer> body = serverHttpRequest.getBody();
@@ -70,4 +76,5 @@ public class ValidateCodeFilter extends AbstractGatewayFilterFactory<Object> {
         });
         return bodyRef.get();
     }
+
 }
