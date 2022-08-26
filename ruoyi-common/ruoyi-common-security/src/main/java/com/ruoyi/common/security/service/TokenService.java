@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import javax.servlet.http.HttpServletRequest;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.ruoyi.common.core.constant.CacheConstants;
@@ -23,8 +24,10 @@ import com.ruoyi.system.api.model.LoginUser;
  *
  * @author ruoyi
  */
+@Slf4j
 @Component
 public class TokenService {
+
     @Autowired
     private RedisService redisService;
 
@@ -32,11 +35,11 @@ public class TokenService {
 
     protected static final long MILLIS_MINUTE = 60 * MILLIS_SECOND;
 
-    private final static long expireTime = CacheConstants.EXPIRATION;
+    private static final long EXPIRATION = CacheConstants.EXPIRATION;
 
-    private final static String ACCESS_TOKEN = CacheConstants.LOGIN_TOKEN_KEY;
+    private static final String ACCESS_TOKEN = CacheConstants.LOGIN_TOKEN_KEY;
 
-    private final static Long MILLIS_MINUTE_TEN = CacheConstants.REFRESH_TIME * MILLIS_MINUTE;
+    private static final Long MILLIS_MINUTE_TEN = CacheConstants.REFRESH_TIME * MILLIS_MINUTE;
 
     /**
      * 创建令牌
@@ -60,7 +63,7 @@ public class TokenService {
         //接口返回信息
         Map<String, Object> rspMap = new HashMap<>();
         rspMap.put("access_token", JwtUtils.createToken(claimsMap));
-        rspMap.put("expires_in", expireTime);
+        rspMap.put("expires_in", EXPIRATION);
         return rspMap;
     }
 
@@ -90,16 +93,15 @@ public class TokenService {
      * @return 用户信息
      */
     public LoginUser getLoginUser(String token) {
-        LoginUser user = null;
         try {
             if (StringUtils.isNotEmpty(token)) {
                 String userkey = JwtUtils.getUserKey(token);
-                user = redisService.getCacheObject(getTokenKey(userkey));
-                return user;
+                return redisService.getCacheObject(getTokenKey(userkey));
             }
         } catch (Exception e) {
+            log.error(e.getMessage());
         }
-        return user;
+        return null;
     }
 
     /**
@@ -124,7 +126,7 @@ public class TokenService {
     /**
      * 验证令牌有效期，相差不足120分钟，自动刷新缓存
      *
-     * @param loginUser
+     * @param loginUser loginUser
      */
     public void verifyToken(LoginUser loginUser) {
         long expireTime = loginUser.getExpireTime();
@@ -141,10 +143,10 @@ public class TokenService {
      */
     public void refreshToken(LoginUser loginUser) {
         loginUser.setLoginTime(System.currentTimeMillis());
-        loginUser.setExpireTime(loginUser.getLoginTime() + expireTime * MILLIS_MINUTE);
+        loginUser.setExpireTime(loginUser.getLoginTime() + EXPIRATION * MILLIS_MINUTE);
         //根据uuid将loginUser缓存
         String userKey = getTokenKey(loginUser.getToken());
-        redisService.setCacheObject(userKey, loginUser, expireTime, TimeUnit.MINUTES);
+        redisService.setCacheObject(userKey, loginUser, EXPIRATION, TimeUnit.MINUTES);
     }
 
     private String getTokenKey(String token) {
