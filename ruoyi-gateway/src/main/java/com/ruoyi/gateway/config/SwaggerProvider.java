@@ -74,4 +74,5 @@ public class SwaggerProvider implements SwaggerResourcesProvider, WebFluxConfigu
         registry.addResourceHandler("/swagger-ui/**")
                 .addResourceLocations("classpath:/META-INF/resources/webjars/springfox-swagger-ui/");
     }
+
 }

@@ -2,6 +2,7 @@ package com.ruoyi.gateway.handler;
 
 import java.io.IOException;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
@@ -19,6 +20,7 @@ import reactor.core.publisher.Mono;
  *
  * @author ruoyi
  */
+@Slf4j
 @Component
 public class ValidateCodeHandler implements HandlerFunction<ServerResponse> {
 
@@ -31,6 +33,7 @@ public class ValidateCodeHandler implements HandlerFunction<ServerResponse> {
         try {
             ajax = validateCodeService.createCaptcha();
         } catch (CaptchaException | IOException e) {
+            log.error(e.getMessage());
             return Mono.error(e);
         }
         return ServerResponse.status(HttpStatus.OK).body(BodyInserters.fromValue(ajax));

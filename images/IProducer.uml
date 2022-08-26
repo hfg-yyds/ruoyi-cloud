@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>com.ruoyi.common.mq.core.IProducer</OriginalElement>
+  <nodes>
+    <node x="22.5" y="242.0">com.ruoyi.test.mq.TestDefaultProducer</node>
+    <node x="0.0" y="87.0">com.ruoyi.common.mq.core.AbstractDefaultProducer</node>
+    <node x="326.0" y="121.0">com.ruoyi.common.mq.core.AbsTransactionProducer</node>
+    <node x="238.75" y="0.0">com.ruoyi.common.mq.core.IProducer</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.ruoyi.common.mq.core.AbsTransactionProducer" target="com.ruoyi.common.mq.core.IProducer">
+      <point x="0.0" y="-18.5" />
+      <point x="473.5" y="62.0" />
+      <point x="350.5" y="62.0" />
+      <point x="37.25" y="18.5" />
+    </edge>
+    <edge source="com.ruoyi.common.mq.core.AbstractDefaultProducer" target="com.ruoyi.common.mq.core.IProducer">
+      <point x="0.0" y="-52.5" />
+      <point x="153.0" y="62.0" />
+      <point x="276.0" y="62.0" />
+      <point x="-37.25" y="18.5" />
+    </edge>
+    <edge source="com.ruoyi.test.mq.TestDefaultProducer" target="com.ruoyi.common.mq.core.AbstractDefaultProducer">
+      <point x="0.0" y="-52.5" />
+      <point x="0.0" y="52.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="310.5" y="173.5" />
+  <SelectedNodes>
+    <node>com.ruoyi.common.mq.core.IProducer</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Inner Classes</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

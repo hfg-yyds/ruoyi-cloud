@@ -57,7 +57,6 @@ public class XssFilter implements GlobalFilter, Ordered {
         }
         ServerHttpRequestDecorator httpRequestDecorator = requestDecorator(exchange);
         return chain.filter(exchange.mutate().request(httpRequestDecorator).build());
-
     }
 
     private ServerHttpRequestDecorator requestDecorator(ServerWebExchange exchange) {
@@ -110,4 +109,5 @@ public class XssFilter implements GlobalFilter, Ordered {
     public int getOrder() {
         return -100;
     }
+
 }
