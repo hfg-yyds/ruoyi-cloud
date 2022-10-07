@@ -85,4 +85,5 @@ public class SysNoticeController extends BaseController {
     public AjaxResult remove(@PathVariable Long[] noticeIds) {
         return toAjax(noticeService.deleteNoticeByIds(noticeIds));
     }
+
 }

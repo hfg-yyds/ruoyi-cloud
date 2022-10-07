@@ -13,7 +13,7 @@ import com.ruoyi.common.core.utils.file.FileTypeUtils;
  *
  * @author ruoyi
  */
-@Service
+@Service("dfsFile")
 public class FastDfsSysFileServiceImpl implements ISysFileService {
     /**
      * 域名或本机访问地址
@@ -36,4 +36,5 @@ public class FastDfsSysFileServiceImpl implements ISysFileService {
                 FileTypeUtils.getExtension(file), null);
         return domain + "/" + storePath.getFullPath();
     }
+
 }

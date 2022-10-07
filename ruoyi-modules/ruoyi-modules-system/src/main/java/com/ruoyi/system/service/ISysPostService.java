@@ -3,6 +3,7 @@ package com.ruoyi.system.service;
 import java.util.List;
 
 import com.ruoyi.system.domain.SysPost;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 岗位信息 服务层
@@ -10,6 +11,7 @@ import com.ruoyi.system.domain.SysPost;
  * @author ruoyi
  */
 public interface ISysPostService {
+
     /**
      * 查询岗位信息集合
      *

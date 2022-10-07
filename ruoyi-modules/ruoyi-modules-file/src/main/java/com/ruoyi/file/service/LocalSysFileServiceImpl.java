@@ -13,7 +13,7 @@ import com.ruoyi.file.utils.FileUploadUtils;
  * @author ruoyi
  */
 @Primary
-@Service
+@Service("localFile")
 public class LocalSysFileServiceImpl implements ISysFileService {
     /**
      * 资源映射路径 前缀
@@ -45,4 +45,5 @@ public class LocalSysFileServiceImpl implements ISysFileService {
         String name = FileUploadUtils.upload(localFilePath, file);
         return domain + localFilePrefix + name;
     }
+
 }

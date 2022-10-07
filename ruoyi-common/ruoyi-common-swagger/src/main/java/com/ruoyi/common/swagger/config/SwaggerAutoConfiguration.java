@@ -28,8 +28,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @EnableAutoConfiguration
-@ConditionalOnProperty(name = "swagger.enabled", matchIfMissing = true)
+@ConditionalOnProperty(name = "swagger.enabled", matchIfMissing = true )
 public class SwaggerAutoConfiguration {
+
     /**
      * 默认的排除路径，排除Spring Boot默认的错误处理路径和端点
      */
@@ -117,4 +118,5 @@ public class SwaggerAutoConfiguration {
                 .version(swaggerProperties.getVersion())
                 .build();
     }
+
 }

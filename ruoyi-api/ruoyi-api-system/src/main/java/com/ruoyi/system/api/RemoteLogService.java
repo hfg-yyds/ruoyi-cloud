@@ -18,6 +18,7 @@ import com.ruoyi.system.api.factory.RemoteLogFallbackFactory;
  */
 @FeignClient(contextId = "remoteLogService", value = ServiceNameConstants.SYSTEM_SERVICE, fallbackFactory = RemoteLogFallbackFactory.class)
 public interface RemoteLogService {
+
     /**
      * 保存系统日志
      *
@@ -37,4 +38,5 @@ public interface RemoteLogService {
      */
     @PostMapping("/logininfor")
     R<Boolean> saveLogininfor(@RequestBody SysLogininfor sysLogininfor, @RequestHeader(SecurityConstants.FROM_SOURCE) String source);
+
 }

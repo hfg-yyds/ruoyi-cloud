@@ -71,4 +71,5 @@ public class SysOperlogController extends BaseController {
     public AjaxResult add(@RequestBody SysOperLog operLog) {
         return toAjax(operLogService.insertOperlog(operLog));
     }
+
 }

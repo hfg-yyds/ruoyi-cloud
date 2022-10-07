@@ -17,6 +17,7 @@ import com.ruoyi.system.api.domain.SysLogininfor;
  */
 @Component
 public class SysRecordLogService {
+
     @Autowired
     private RemoteLogService remoteLogService;
 
@@ -40,4 +41,5 @@ public class SysRecordLogService {
         }
         remoteLogService.saveLogininfor(logininfor, SecurityConstants.INNER);
     }
+
 }

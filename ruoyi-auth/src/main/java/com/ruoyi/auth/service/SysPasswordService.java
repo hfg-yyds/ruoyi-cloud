@@ -39,9 +39,15 @@ public class SysPasswordService {
         return CacheConstants.PWD_ERR_CNT_KEY + username;
     }
 
+    /**
+     * 系统用户密码校验
+     * @param user 用户
+     * @param password 密码
+     */
     public void validate(SysUser user, String password) {
         String username = user.getUserName();
 
+        //查询该用户登录密码错误数
         Integer retryCount = redisService.getCacheObject(getCacheKey(username));
 
         if (retryCount == null) {
@@ -54,7 +60,9 @@ public class SysPasswordService {
             throw new ServiceException(errMsg);
         }
 
+        //用户名是否匹配密码
         if (!matches(user, password)) {
+            //不匹配的情况下 让账户锁定
             retryCount = retryCount + 1;
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, String.format("密码输入错误%s次", retryCount));
             redisService.setCacheObject(getCacheKey(username), retryCount, lockTime, TimeUnit.MINUTES);
@@ -64,6 +72,12 @@ public class SysPasswordService {
         }
     }
 
+    /**
+     * 系统用户密码校验
+     * @param user user
+     * @param rawPassword 密码
+     * @return boolean
+     */
     public boolean matches(SysUser user, String rawPassword) {
         return SecurityUtils.matchesPassword(rawPassword, user.getPassword());
     }

@@ -57,18 +57,18 @@ public class SysLoginService {
         }
         // 查询用户信息
         R<LoginUser> userResult = remoteUserService.getUserInfo(username, SecurityConstants.INNER);
+        LoginUser userInfo = userResult.getData();
 
         if (R.FAIL == userResult.getCode()) {
             throw new ServiceException(userResult.getMsg());
         }
 
-        if (StringUtils.isNull(userResult.getData())) {
+        if (StringUtils.isNull(userInfo)) {
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "登录用户不存在");
             throw new ServiceException("登录用户：" + username + " 不存在");
         }
 
-        LoginUser userInfo = userResult.getData();
-        SysUser user = userResult.getData().getSysUser();
+        SysUser user = userInfo.getSysUser();
         if (UserStatus.DELETED.getCode().equals(user.getDelFlag())) {
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "对不起，您的账号已被删除");
             throw new ServiceException("对不起，您的账号：" + username + " 已被删除");

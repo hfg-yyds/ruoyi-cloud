@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  * @author ruoyi
  */
 public class NotRoleException extends RuntimeException {
+
     private static final long serialVersionUID = 1L;
 
     public NotRoleException(String role) {
@@ -17,4 +18,5 @@ public class NotRoleException extends RuntimeException {
     public NotRoleException(String[] roles) {
         super(StringUtils.join(roles, ","));
     }
+
 }

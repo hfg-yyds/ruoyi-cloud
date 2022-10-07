@@ -21,6 +21,7 @@ import com.ruoyi.common.core.web.page.TableDataInfo;
  * @author ruoyi
  */
 public class BaseController {
+
     protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     /**

@@ -13,6 +13,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  */
 public class SysJobLog extends BaseEntity {
+
     private static final long serialVersionUID = 1L;
 
     /**

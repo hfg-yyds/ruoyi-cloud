@@ -221,4 +221,5 @@ public class IpUtils {
     public static boolean isUnknown(String checkString) {
         return StringUtils.isBlank(checkString) || "unknown".equalsIgnoreCase(checkString);
     }
+
 }

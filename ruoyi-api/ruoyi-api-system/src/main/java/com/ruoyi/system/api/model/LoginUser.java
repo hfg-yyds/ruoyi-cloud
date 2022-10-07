@@ -7,7 +7,7 @@ import com.ruoyi.system.api.domain.SysUser;
 import lombok.Data;
 
 /**
- * 用户信息
+ * 用户登录信息
  *
  * @author ruoyi
  */

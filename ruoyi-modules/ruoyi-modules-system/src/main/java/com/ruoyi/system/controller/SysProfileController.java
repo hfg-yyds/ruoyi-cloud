@@ -36,6 +36,7 @@ import com.ruoyi.system.service.ISysUserService;
 @RestController
 @RequestMapping("/user/profile")
 public class SysProfileController extends BaseController {
+
     @Autowired
     private ISysUserService userService;
 
@@ -143,4 +144,5 @@ public class SysProfileController extends BaseController {
         }
         return AjaxResult.error("上传图片异常，请联系管理员");
     }
+
 }

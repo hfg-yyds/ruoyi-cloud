@@ -37,6 +37,7 @@ import com.ruoyi.gen.service.IGenTableService;
 @RequestMapping("/gen")
 @RestController
 public class GenController extends BaseController {
+
     @Autowired
     private IGenTableService genTableService;
 

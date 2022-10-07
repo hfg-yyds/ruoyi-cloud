@@ -18,6 +18,8 @@ import com.ruoyi.common.core.exception.auth.NotRoleException;
 import com.ruoyi.common.core.utils.StringUtils;
 import com.ruoyi.common.core.web.domain.AjaxResult;
 
+import java.util.Objects;
+
 /**
  * 全局异常处理器
  *
@@ -25,6 +27,7 @@ import com.ruoyi.common.core.web.domain.AjaxResult;
  */
 @RestControllerAdvice
 public class GlobalExceptionHandler {
+
     private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
@@ -104,7 +107,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Object handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error(e.getMessage(), e);
-        String message = e.getBindingResult().getFieldError().getDefaultMessage();
+        String message = Objects.requireNonNull(e.getBindingResult().getFieldError()).getDefaultMessage();
         return AjaxResult.error(message);
     }
 

@@ -51,4 +51,5 @@ public class InnerAuthAspect implements Ordered {
     public int getOrder() {
         return Ordered.HIGHEST_PRECEDENCE + 1;
     }
+
 }

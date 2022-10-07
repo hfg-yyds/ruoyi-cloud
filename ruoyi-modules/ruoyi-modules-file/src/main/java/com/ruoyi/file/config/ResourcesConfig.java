@@ -15,6 +15,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @Configuration
 public class ResourcesConfig implements WebMvcConfigurer {
+
     /**
      * 上传文件存储在本地的根路径
      */
@@ -46,4 +47,5 @@ public class ResourcesConfig implements WebMvcConfigurer {
                 // 设置允许的方法
                 .allowedMethods("GET","POST");
     }
+
 }

@@ -84,4 +84,5 @@ public class PreAuthorizeAspect {
             AuthUtil.checkPermi(requiresPermissions);
         }
     }
+
 }

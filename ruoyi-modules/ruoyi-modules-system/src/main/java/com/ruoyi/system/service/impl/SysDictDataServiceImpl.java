@@ -16,6 +16,7 @@ import com.ruoyi.system.service.ISysDictDataService;
  */
 @Service
 public class SysDictDataServiceImpl implements ISysDictDataService {
+
     @Autowired
     private SysDictDataMapper dictDataMapper;
 

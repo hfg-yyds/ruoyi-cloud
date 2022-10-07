@@ -6,6 +6,7 @@ package com.ruoyi.common.core.exception;
  * @author ruoyi
  */
 public class CheckedException extends RuntimeException {
+
     private static final long serialVersionUID = 1L;
 
     public CheckedException(String message) {
@@ -23,4 +24,5 @@ public class CheckedException extends RuntimeException {
     public CheckedException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+
 }

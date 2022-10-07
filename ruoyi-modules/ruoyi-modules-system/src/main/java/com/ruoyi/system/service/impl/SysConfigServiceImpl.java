@@ -23,6 +23,7 @@ import com.ruoyi.system.service.ISysConfigService;
  */
 @Service
 public class SysConfigServiceImpl implements ISysConfigService {
+
     @Autowired
     private SysConfigMapper configMapper;
 
@@ -184,4 +185,5 @@ public class SysConfigServiceImpl implements ISysConfigService {
     private String getCacheKey(String configKey) {
         return CacheConstants.SYS_CONFIG_KEY + configKey;
     }
+
 }

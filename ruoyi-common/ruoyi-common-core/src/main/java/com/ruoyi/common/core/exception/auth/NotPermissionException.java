@@ -8,6 +8,7 @@ import org.apache.commons.lang3.StringUtils;
  * @author ruoyi
  */
 public class NotPermissionException extends RuntimeException {
+
     private static final long serialVersionUID = 1L;
 
     public NotPermissionException(String permission) {

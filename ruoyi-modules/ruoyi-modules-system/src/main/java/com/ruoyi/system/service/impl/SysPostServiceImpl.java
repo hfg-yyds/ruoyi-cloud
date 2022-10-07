@@ -19,6 +19,7 @@ import com.ruoyi.system.service.ISysPostService;
  */
 @Service
 public class SysPostServiceImpl implements ISysPostService {
+
     @Autowired
     private SysPostMapper postMapper;
 

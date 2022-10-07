@@ -13,7 +13,7 @@ import io.minio.PutObjectArgs;
  *
  * @author ruoyi
  */
-@Service
+@Service("minioFile")
 public class MinioSysFileServiceImpl implements ISysFileService {
 
     @Autowired

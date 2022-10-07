@@ -88,4 +88,5 @@ public class CharsetKit {
     public static String systemCharset() {
         return Charset.defaultCharset().name();
     }
+
 }

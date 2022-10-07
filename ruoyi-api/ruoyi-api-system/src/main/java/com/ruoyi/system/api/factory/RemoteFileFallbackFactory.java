@@ -14,11 +14,15 @@ import com.ruoyi.system.api.RemoteFileService;
 @Slf4j
 @Component
 public class RemoteFileFallbackFactory implements FallbackFactory<RemoteFileService> {
-
+    /**
+     * Returns an instance of the fallback appropriate for the given cause.
+     *
+     * @param cause cause of an exception.
+     * @return fallback
+     */
     @Override
-    public RemoteFileService create(Throwable throwable) {
-        log.error("文件服务调用失败:{}", throwable.getMessage());
-        return file -> R.fail("上传文件失败:" + throwable.getMessage());
+    public RemoteFileService create(Throwable cause) {
+        return file -> R.fail(String.format("上传文件失败：{%s}",cause.getMessage()));
     }
 
 }
