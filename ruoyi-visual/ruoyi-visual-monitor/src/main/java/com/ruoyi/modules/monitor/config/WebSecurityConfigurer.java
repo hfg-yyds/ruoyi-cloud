@@ -15,12 +15,25 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 @EnableWebSecurity
 public class WebSecurityConfigurer {
 
+    /**
+     * 权限路径
+     */
     private final String adminContextPath;
 
+    /**
+     * 通过构造器的方式设置权限路径
+     * @param adminServerProperties adminServer配置文件
+     */
     public WebSecurityConfigurer(AdminServerProperties adminServerProperties) {
         this.adminContextPath = adminServerProperties.getContextPath();
     }
 
+    /**
+     * 配置过滤器链
+     * @param httpSecurity  HttpSecurity类似于名称空间配置中的Spring Security的XML
+     * @return SecurityFilterChain
+     * @throws Exception e
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
         SavedRequestAwareAuthenticationSuccessHandler successHandler = new SavedRequestAwareAuthenticationSuccessHandler();

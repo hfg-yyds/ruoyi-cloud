@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import de.codecentric.boot.admin.server.config.EnableAdminServer;
 
 /**
- * 监控中心
+ * 监控中心服务
  *
  * @author ruoyi
  */
