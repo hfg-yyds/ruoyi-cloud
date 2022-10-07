@@ -40,6 +40,7 @@
         <poi.version>4.1.2</poi.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <transmittable-thread-local.version>2.13.2</transmittable-thread-local.version>
+        <hutool.version>5.7.22</hutool.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -237,6 +238,13 @@
                 <groupId>com.ruoyi</groupId>
                 <artifactId>ruoyi-api-system</artifactId>
                 <version>${ruoyi.version}</version>
+            </dependency>
+
+            <!--Hutool工具类-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
             </dependency>
 
         </dependencies>

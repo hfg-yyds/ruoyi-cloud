@@ -6,6 +6,7 @@ package com.ruoyi.common.core.exception;
  * @author ruoyi
  */
 public class GlobalException extends RuntimeException {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -48,4 +49,5 @@ public class GlobalException extends RuntimeException {
         this.message = message;
         return this;
     }
+
 }

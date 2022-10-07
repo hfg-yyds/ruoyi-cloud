@@ -44,40 +44,45 @@ public class R<T> implements Serializable {
      */
     private T data;
 
+    /**
+     * 正确返回
+     * @param <T>
+     * @return
+     */
     public static <T> R<T> ok() {
-        return restResult(null, SUCCESS, null);
+        return restResult( SUCCESS, null,null);
     }
 
     public static <T> R<T> ok(T data) {
-        return restResult(data, SUCCESS, null);
+        return restResult(SUCCESS, null,data);
     }
 
     public static <T> R<T> ok(T data, String msg) {
-        return restResult(data, SUCCESS, msg);
+        return restResult(SUCCESS, msg,data);
     }
 
     public static <T> R<T> fail() {
-        return restResult(null, FAIL, null);
+        return restResult(FAIL, null,null);
     }
 
     public static <T> R<T> fail(String msg) {
-        return restResult(null, FAIL, msg);
+        return restResult( FAIL, msg,null);
     }
 
     public static <T> R<T> fail(T data) {
-        return restResult(data, FAIL, null);
+        return restResult(FAIL, null,data);
     }
 
     public static <T> R<T> fail(T data, String msg) {
-        return restResult(data, FAIL, msg);
+        return restResult(FAIL, msg,data);
     }
 
     public static <T> R<T> fail(int code, String msg) {
-        return restResult(null, code, msg);
+        return restResult(code, msg,null);
     }
 
     /**
-     * 封装的返回
+     * 封装返回结果
      * @param runnable 函数式接口
      * @param <T> 返回类型
      * @return T
@@ -92,6 +97,12 @@ public class R<T> implements Serializable {
         }
     }
 
+    /**
+     * 封装返回结果
+     * @param supplier 供给型函数式接口
+     * @param <T> 函数式接口返回值
+     * @return T
+     */
     public static <T> R<T> run(Supplier<T> supplier) {
         try {
             return ok(supplier.get());
@@ -101,7 +112,15 @@ public class R<T> implements Serializable {
         }
     }
 
-    private static <T> R<T> restResult(T data, int code, String msg) {
+    /**
+     * 构造函数
+     * @param code 返回码
+     * @param msg 返回信息
+     * @param data 返回数据
+     * @param <T> 返回数据类型
+     * @return R
+     */
+    private static <T> R<T> restResult(int code, String msg,T data) {
         R<T> apiResult = new R<>();
         apiResult.setCode(code);
         apiResult.setData(data);

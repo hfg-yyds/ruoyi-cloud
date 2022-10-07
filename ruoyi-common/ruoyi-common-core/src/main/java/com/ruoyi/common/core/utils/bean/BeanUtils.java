@@ -72,7 +72,6 @@ public class BeanUtils extends org.springframework.beans.BeanUtils {
      * @param obj 对象
      * @return 对象的getter方法列表
      */
-
     public static List<Method> getGetterMethods(Object obj) {
         // getter方法列表
         List<Method> getterMethods = new ArrayList<Method>();

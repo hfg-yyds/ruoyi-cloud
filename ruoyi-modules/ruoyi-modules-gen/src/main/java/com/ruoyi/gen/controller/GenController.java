@@ -50,7 +50,7 @@ public class GenController extends BaseController {
     @RequiresPermissions("tool:gen:list")
     @GetMapping("/list")
     public TableDataInfo genList(GenTable genTable) {
-        startPage();
+        this.startPage();
         List<GenTable> list = genTableService.selectGenTableList(genTable);
         return getDataTable(list);
     }

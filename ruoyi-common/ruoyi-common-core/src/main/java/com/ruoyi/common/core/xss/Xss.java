@@ -16,11 +16,23 @@ import java.lang.annotation.Target;
 @Target(value = {ElementType.METHOD, ElementType.FIELD, ElementType.CONSTRUCTOR, ElementType.PARAMETER})
 @Constraint(validatedBy = {XssValidator.class})
 public @interface Xss {
-    String message()
 
-            default "不允许任何脚本运行";
+    /**
+     * Xss信息
+     * @return String
+     */
+    String message() default "不允许任何脚本运行";
 
+    /**
+     * 分组
+     * @return Class
+     */
     Class<?>[] groups() default {};
 
+    /**
+     * 有效载荷类型
+     * @return Payload以及子类
+     */
     Class<? extends Payload>[] payload() default {};
+
 }

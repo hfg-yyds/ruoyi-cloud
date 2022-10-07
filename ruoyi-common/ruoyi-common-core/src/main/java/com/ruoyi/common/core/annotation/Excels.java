@@ -13,5 +13,11 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Excels {
+
+    /**
+     * Excel值
+     * @return Excel
+     */
     Excel[] value();
+
 }
