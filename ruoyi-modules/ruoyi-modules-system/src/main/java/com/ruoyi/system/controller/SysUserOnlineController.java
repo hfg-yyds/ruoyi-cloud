@@ -5,6 +5,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,15 +34,29 @@ import com.ruoyi.system.service.ISysUserOnlineService;
 @RequestMapping("/online")
 public class SysUserOnlineController extends BaseController {
 
+    /**
+     * 在线用户接口
+     */
     @Autowired
     private ISysUserOnlineService userOnlineService;
 
+    /**
+     * Redis服务
+     */
     @Autowired
     private RedisService redisService;
 
+    /**
+     * 通过IP地址以及用户名字查询用户列表
+     * @param ipaddr ip地址
+     * @param userName 用户名字
+     * @return TableDataInfo
+     */
     @RequiresPermissions("monitor:online:list")
     @GetMapping("/list")
+    @ApiOperation(value = "通过IP地址以及用户名字查询用户列表")
     public TableDataInfo list(String ipaddr, String userName) {
+        //获取到所有用户的
         Collection<String> keys = redisService.keys(CacheConstants.LOGIN_TOKEN_KEY + "*");
         List<SysUserOnline> userOnlineList = new ArrayList<>();
         for (String key : keys) {
@@ -69,10 +84,13 @@ public class SysUserOnlineController extends BaseController {
 
     /**
      * 强退用户
+     * @param tokenId tokenId
+     * @return AjaxResult
      */
     @RequiresPermissions("monitor:online:forceLogout")
     @Log(title = "在线用户", businessType = BusinessType.FORCE)
     @DeleteMapping("/{tokenId}")
+    @ApiOperation(value = "强退用户")
     public AjaxResult forceLogout(@PathVariable String tokenId) {
         redisService.deleteObject(CacheConstants.LOGIN_TOKEN_KEY + tokenId);
         return AjaxResult.success();

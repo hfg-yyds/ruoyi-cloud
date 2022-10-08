@@ -20,6 +20,11 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @AutoConfigureBefore(RedisAutoConfiguration.class)
 public class RedisConfig extends CachingConfigurerSupport {
 
+    /**
+     * Redis配置类
+     * @param connectionFactory connectionFactory
+     * @return RedisTemplate
+     */
     @Bean
     @SuppressWarnings(value = {"unchecked", "rawtypes"})
     public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory connectionFactory) {
@@ -39,4 +44,5 @@ public class RedisConfig extends CachingConfigurerSupport {
         template.afterPropertiesSet();
         return template;
     }
+
 }

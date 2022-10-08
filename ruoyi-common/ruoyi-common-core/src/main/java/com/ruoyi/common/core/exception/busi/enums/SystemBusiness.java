@@ -1,5 +1,6 @@
 package com.ruoyi.common.core.exception.busi.enums;
 
+import cn.hutool.core.util.StrUtil;
 import com.ruoyi.common.core.exception.busi.BusinessException;
 import com.ruoyi.common.core.exception.busi.IException;
 import lombok.Getter;
@@ -13,12 +14,12 @@ import lombok.Getter;
  * @date: 2022-10-07
  */
 @Getter
-public enum SystemBusiness implements IException {
+public enum SystemBusiness implements IException<BusinessException> {
 
     /**
      * 外调接口异常
      */
-    OUT_CALL_EXCEPTION("320110","%s接口外调异常"),
+    OUT_CALL_EXCEPTION("320110","{}接口外调异常"),
 
     ;
 
@@ -50,10 +51,7 @@ public enum SystemBusiness implements IException {
      */
     @Override
     public BusinessException exception(Object... message) {
-        if (message == null ||message.length==0) {
-            return BusinessException.exception(this.code,this.msg);
-        }
-        return BusinessException.exception(code,String.format(this.msg, message));
+        return BusinessException.exception(code, StrUtil.format(this.msg, message));
     }
 
 }

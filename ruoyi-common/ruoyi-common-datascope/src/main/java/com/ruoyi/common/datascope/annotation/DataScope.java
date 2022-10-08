@@ -15,6 +15,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 public @interface DataScope {
+
     /**
      * 部门表的别名
      */
@@ -24,4 +25,5 @@ public @interface DataScope {
      * 用户表的别名
      */
     String userAlias() default "";
+
 }

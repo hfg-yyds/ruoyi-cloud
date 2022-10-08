@@ -2,19 +2,19 @@ package com.ruoyi.common.core.exception.busi;
 
 /**
  * <p>
- *  业务异常模块的顶级接口
+ *  异常模块的顶级接口
  * </p>
  *
  * @author: 韩福贵
  * @date: 2022-10-07
  */
-public interface IException {
+public interface IException<T> {
 
     /**
-     * 返回业务异常
+     * 返回异常类型
      * @param message 异常描述
      * @return BusinessException
      */
-    BusinessException exception(Object ...message);
+    T exception(Object ...message);
 
 }

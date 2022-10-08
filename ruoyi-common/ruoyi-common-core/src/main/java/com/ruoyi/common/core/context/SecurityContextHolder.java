@@ -16,8 +16,16 @@ import com.ruoyi.common.core.utils.StringUtils;
  */
 public class SecurityContextHolder {
 
+    /**
+     * THREAD_LOCAL
+     */
     private static final TransmittableThreadLocal<Map<String, Object>> THREAD_LOCAL = new TransmittableThreadLocal<>();
 
+    /**
+     *
+     * @param key
+     * @param value
+     */
     public static void set(String key, Object value) {
         Map<String, Object> map = getLocalMap();
         map.put(key, value == null ? StringUtils.EMPTY : value);
@@ -73,4 +81,5 @@ public class SecurityContextHolder {
     public static void remove() {
         THREAD_LOCAL.remove();
     }
+
 }

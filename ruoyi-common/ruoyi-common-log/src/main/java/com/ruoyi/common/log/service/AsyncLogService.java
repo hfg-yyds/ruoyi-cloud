@@ -14,6 +14,10 @@ import com.ruoyi.system.api.domain.SysOperLog;
  */
 @Service
 public class AsyncLogService {
+
+    /**
+     * 日志登记服务
+     */
     @Autowired
     private RemoteLogService remoteLogService;
 
@@ -24,4 +28,5 @@ public class AsyncLogService {
     public void saveSysLog(SysOperLog sysOperLog) {
         remoteLogService.saveLog(sysOperLog, SecurityConstants.INNER);
     }
+
 }

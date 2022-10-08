@@ -3,6 +3,7 @@ package com.ruoyi.common.security.interceptor;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.lang.NonNull;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.AsyncHandlerInterceptor;
 import com.ruoyi.common.core.constant.SecurityConstants;
@@ -20,8 +21,16 @@ import com.ruoyi.system.api.model.LoginUser;
  * @author ruoyi
  */
 public class HeaderInterceptor implements AsyncHandlerInterceptor {
+
+    /**
+     * 请求拦截器
+     * @param request request
+     * @param response response
+     * @param handler handler
+     * @return boolean
+     */
     @Override
-    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+    public boolean preHandle(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response,@NonNull Object handler) {
         if (!(handler instanceof HandlerMethod)) {
             return true;
         }
@@ -42,8 +51,9 @@ public class HeaderInterceptor implements AsyncHandlerInterceptor {
     }
 
     @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-            throws Exception {
+    public void afterCompletion(@NonNull HttpServletRequest request,@NonNull HttpServletResponse response,
+                                        @NonNull Object handler, Exception ex) {
         SecurityContextHolder.remove();
     }
+
 }

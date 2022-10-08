@@ -42,6 +42,9 @@ public class LogAspect {
      */
     public static final String[] EXCLUDE_PROPERTIES = {"password", "oldPassword", "newPassword", "confirmPassword"};
 
+    /**
+     * 日志服务
+     */
     @Autowired
     private AsyncLogService asyncLogService;
 

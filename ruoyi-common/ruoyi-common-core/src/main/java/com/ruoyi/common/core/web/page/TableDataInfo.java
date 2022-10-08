@@ -53,4 +53,5 @@ public class TableDataInfo implements Serializable {
         this.rows = list;
         this.total = total;
     }
+
 }
