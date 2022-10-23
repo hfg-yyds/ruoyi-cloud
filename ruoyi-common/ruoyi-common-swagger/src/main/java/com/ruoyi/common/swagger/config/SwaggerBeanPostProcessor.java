@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
  */
 @Component
 public class SwaggerBeanPostProcessor implements BeanPostProcessor {
+
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         if (bean instanceof WebMvcRequestHandlerProvider || bean instanceof WebFluxRequestHandlerProvider) {
@@ -44,4 +45,5 @@ public class SwaggerBeanPostProcessor implements BeanPostProcessor {
             throw new IllegalStateException(e);
         }
     }
+
 }

@@ -19,12 +19,6 @@
     <dependencies>
 
         <dependency>
-            <groupId>com.ruoyi</groupId>
-            <artifactId>ruoyi-common-mq</artifactId>
-            <version>3.6.0</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
@@ -33,9 +27,17 @@
             <groupId>com.ruoyi</groupId>
             <artifactId>ruoyi-common-core</artifactId>
         </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>com.hacker</groupId>
+            <artifactId>commons-swagger</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 </project>

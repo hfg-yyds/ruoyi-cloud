@@ -23,19 +23,19 @@
     </resultMap>
 
     <sql id="selectDeptVo">
-        select d.dept_id,
-               d.parent_id,
-               d.ancestors,
-               d.dept_name,
-               d.order_num,
-               d.leader,
-               d.phone,
-               d.email,
-               d.status,
-               d.del_flag,
-               d.create_by,
-               d.create_time
-        from sys_dept d
+        SELECT D.DEPT_ID,
+               D.PARENT_ID,
+               D.ANCESTORS,
+               D.DEPT_NAME,
+               D.ORDER_NUM,
+               D.LEADER,
+               D.PHONE,
+               D.EMAIL,
+               D.STATUS,
+               D.DEL_FLAG,
+               D.CREATE_BY,
+               D.CREATE_TIME
+        FROM SYS_DEPT D
     </sql>
 
     <select id="selectDeptList" parameterType="SysDept" resultMap="SysDeptResult">

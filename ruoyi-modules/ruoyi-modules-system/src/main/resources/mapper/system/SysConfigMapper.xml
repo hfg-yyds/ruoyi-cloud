@@ -17,24 +17,24 @@
     </resultMap>
 
     <sql id="selectConfigVo">
-        select config_id,
-               config_name,
-               config_key,
-               config_value,
-               config_type,
-               create_by,
-               create_time,
-               update_by,
-               update_time,
-               remark
-        from sys_config
+        SELECT CONFIG_ID,
+               CONFIG_NAME,
+               CONFIG_KEY,
+               CONFIG_VALUE,
+               CONFIG_TYPE,
+               CREATE_BY,
+               CREATE_TIME,
+               UPDATE_BY,
+               UPDATE_TIME,
+               REMARK
+        FROM SYS_CONFIG
     </sql>
 
     <!-- 查询条件 -->
     <sql id="sqlwhereSearch">
         <where>
             <if test="configId !=null">
-                and config_id = #{configId}
+                and config_id = #{configid}
             </if>
             <if test="configKey !=null and configKey != ''">
                 and config_key = #{configKey}
