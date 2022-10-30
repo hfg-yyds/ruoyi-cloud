@@ -4,6 +4,7 @@ import java.beans.PropertyEditorSupport;
 import java.util.Date;
 import java.util.List;
 
+import com.github.pagehelper.Page;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.WebDataBinder;
@@ -112,4 +113,5 @@ public class BaseController {
     public AjaxResult error(String message) {
         return AjaxResult.error(message);
     }
+
 }

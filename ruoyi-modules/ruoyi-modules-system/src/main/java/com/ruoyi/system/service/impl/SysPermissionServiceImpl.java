@@ -12,6 +12,7 @@ import com.ruoyi.system.service.ISysRoleService;
 
 @Service
 public class SysPermissionServiceImpl implements ISysPermissionService {
+
     @Autowired
     private ISysRoleService roleService;
 

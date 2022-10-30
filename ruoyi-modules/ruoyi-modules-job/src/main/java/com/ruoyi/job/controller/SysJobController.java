@@ -37,6 +37,7 @@ import com.ruoyi.job.util.ScheduleUtils;
 @RestController
 @RequestMapping("/job")
 public class SysJobController extends BaseController {
+
     @Autowired
     private ISysJobService jobService;
 
