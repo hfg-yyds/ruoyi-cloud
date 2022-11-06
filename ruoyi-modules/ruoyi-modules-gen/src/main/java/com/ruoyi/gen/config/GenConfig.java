@@ -1,14 +1,14 @@
 package com.ruoyi.gen.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 /**
  * 代码生成相关配置
  *
  * @author ruoyi
  */
-@Component
+@Configuration
 @ConfigurationProperties(prefix = "gen")
 public class GenConfig {
     /**

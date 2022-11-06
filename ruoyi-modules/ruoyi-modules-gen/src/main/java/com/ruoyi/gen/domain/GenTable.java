@@ -15,6 +15,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  */
 public class GenTable extends BaseEntity {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -360,4 +361,5 @@ public class GenTable extends BaseEntity {
         }
         return StringUtils.equalsAnyIgnoreCase(javaField, GenConstants.BASE_ENTITY);
     }
+
 }

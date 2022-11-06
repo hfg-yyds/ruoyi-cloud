@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 
+import io.swagger.annotations.Api;
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
@@ -34,8 +35,9 @@ import com.ruoyi.gen.service.IGenTableService;
  *
  * @author ruoyi
  */
-@RequestMapping("/gen")
 @RestController
+@RequestMapping("/gen")
+@Api(value = "代码生成 操作处理")
 public class GenController extends BaseController {
 
     @Autowired
@@ -196,4 +198,5 @@ public class GenController extends BaseController {
         response.setContentType("application/octet-stream; charset=UTF-8");
         IOUtils.write(data, response.getOutputStream());
     }
+
 }

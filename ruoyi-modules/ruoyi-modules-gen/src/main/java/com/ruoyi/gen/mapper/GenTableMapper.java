@@ -10,6 +10,7 @@ import com.ruoyi.gen.domain.GenTable;
  * @author ruoyi
  */
 public interface GenTableMapper {
+
     /**
      * 查询业务列表
      *

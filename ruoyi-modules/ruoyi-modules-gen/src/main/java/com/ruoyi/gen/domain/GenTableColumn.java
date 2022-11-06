@@ -11,6 +11,7 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  * @author ruoyi
  */
 public class GenTableColumn extends BaseEntity {
+
     private static final long serialVersionUID = 1L;
 
     /**
@@ -345,4 +346,5 @@ public class GenTableColumn extends BaseEntity {
             return this.columnComment;
         }
     }
+
 }

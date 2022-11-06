@@ -1,7 +1,8 @@
-package com.ruoyi.gen.service;
+package com.ruoyi.gen.service.impl;
 
 import java.util.List;
 
+import com.ruoyi.gen.service.IGenTableColumnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.ruoyi.common.core.text.Convert;
