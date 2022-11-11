@@ -3,7 +3,7 @@ package com.ruoyi.common.core.utils;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 import com.ruoyi.common.core.annotation.FieldOrder;
-import com.ruoyi.common.core.domain.OrderEntity;
+import com.ruoyi.common.core.interfaces.OrderEntity;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
@@ -35,7 +35,7 @@ public class FieldUtil {
             for (Field field : fields) {
                 field.setAccessible(true);
                 int order = field.getAnnotation(FieldOrder.class).order();
-                field.set(instance,list.get(order));
+                field.set(instance, StrUtil.trim(list.get(order)));
             }
         }catch (Exception e) {
             log.error("属性转换:,",e);

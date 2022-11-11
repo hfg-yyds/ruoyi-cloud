@@ -235,6 +235,13 @@
                 <version>${ruoyi.version}</version>
             </dependency>
 
+            <!--文件服务-->
+            <dependency>
+                <groupId>com.ruoyi</groupId>
+                <artifactId>ruoyi-common-file</artifactId>
+                <version>${ruoyi.version}</version>
+            </dependency>
+
             <!-- 缓存服务 -->
             <dependency>
                 <groupId>com.ruoyi</groupId>

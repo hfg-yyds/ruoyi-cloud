@@ -3,6 +3,8 @@ package com.ruoyi.system.domain;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.core.annotation.Excel;
@@ -14,6 +16,8 @@ import com.ruoyi.common.core.web.domain.BaseEntity;
  *
  * @author ruoyi
  */
+@EqualsAndHashCode(callSuper = true)
+@Data
 public class SysConfig extends BaseEntity {
     private static final long serialVersionUID = 1L;
 

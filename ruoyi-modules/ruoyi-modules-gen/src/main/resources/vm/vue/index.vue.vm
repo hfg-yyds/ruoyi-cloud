@@ -301,7 +301,7 @@
               </el-col>
             </el-row>
             <el-table :data="${subclassName}List" :row-class-name="row${subClassName}Index"
-                      @selection-change="handle${subClassName}SelectionChange" ref="${subclassName}">
+                      @selection-change="lineHandle${subClassName}SelectionChange" ref="${subclassName}">
               <el-table-column type="selection" width="50" align="center"/>
               <el-table-column label="序号" align="center" prop="index" width="50"/>
                 #foreach($column in $subTable.columns)
@@ -704,7 +704,7 @@
   }
   ,
   /** 复选框选中数据 */
-  handle$
+  lineHandle$
   {
     subClassName
   }

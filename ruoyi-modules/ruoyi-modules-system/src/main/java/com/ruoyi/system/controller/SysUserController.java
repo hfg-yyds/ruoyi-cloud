@@ -100,7 +100,9 @@ public class SysUserController extends BaseController {
     }
 
     /**
-     * 获取当前用户信息
+     * 获取当前用户信息,包括用户的角色以及权限
+     * @param username 用户名字
+     * @return R
      */
     @InnerAuth
     @GetMapping("/info/{username}")
@@ -281,4 +283,5 @@ public class SysUserController extends BaseController {
         userService.insertUserAuth(userId, roleIds);
         return success();
     }
+
 }

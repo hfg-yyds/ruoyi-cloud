@@ -1178,7 +1178,7 @@ public class ExcelUtil<T> {
      * @return 子列表方法
      */
     public Method getSubMethod(String name, Class<?> pojoClass) {
-        StringBuffer getMethodName = new StringBuffer("get");
+        StringBuilder getMethodName = new StringBuilder("get");
         getMethodName.append(name.substring(0, 1).toUpperCase());
         getMethodName.append(name.substring(1));
         Method method = null;
@@ -1189,4 +1189,5 @@ public class ExcelUtil<T> {
         }
         return method;
     }
+
 }

@@ -45,6 +45,11 @@ public class SysDictTypeController extends BaseController {
         return getDataTable(list);
     }
 
+    /**
+     * 字典数据导出
+     * @param response response
+     * @param dictType 字典类型表
+     */
     @Log(title = "字典类型", businessType = BusinessType.EXPORT)
     @RequiresPermissions("system:dict:export")
     @PostMapping("/export")

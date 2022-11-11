@@ -27,7 +27,7 @@ public class SysPermissionServiceImpl implements ISysPermissionService {
      */
     @Override
     public Set<String> getRolePermission(Long userId) {
-        Set<String> roles = new HashSet<String>();
+        Set<String> roles = new HashSet<>();
         // 管理员拥有所有权限
         if (SysUser.isAdmin(userId)) {
             roles.add("admin");

@@ -47,7 +47,7 @@ public class SysUserOnlineController extends BaseController {
     private RedisService redisService;
 
     /**
-     * 通过IP地址以及用户名字查询用户列表
+     * 通过IP地址以及用户名字查询在线用户列表
      * @param ipaddr ip地址
      * @param userName 用户名字
      * @return TableDataInfo
@@ -56,7 +56,7 @@ public class SysUserOnlineController extends BaseController {
     @GetMapping("/list")
     @ApiOperation(value = "通过IP地址以及用户名字查询用户列表")
     public TableDataInfo list(String ipaddr, String userName) {
-        //获取到所有用户的
+        //获取到所有在线用户的在Redis的Key
         Collection<String> keys = redisService.keys(CacheConstants.LOGIN_TOKEN_KEY + "*");
         List<SysUserOnline> userOnlineList = new ArrayList<>();
         for (String key : keys) {
@@ -83,7 +83,7 @@ public class SysUserOnlineController extends BaseController {
     }
 
     /**
-     * 强退用户
+     * 强退用户 - 删除用户在Redis的缓存
      * @param tokenId tokenId
      * @return AjaxResult
      */

@@ -276,7 +276,7 @@
               :list="activeData.options"
               :animation="340"
               group="selectItem"
-              handle=".option-drag"
+              lineHandle=".option-drag"
             >
               <div v-for="(item, index) in activeData.options" :key="index" class="select-item">
                 <div class="select-line-icon option-drag">

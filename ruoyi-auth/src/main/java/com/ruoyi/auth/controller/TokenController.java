@@ -28,9 +28,14 @@ import java.util.Map;
 @RestController
 public class TokenController {
 
+    /**
+     * Token验证
+     */
     @Autowired
     private TokenService tokenService;
-
+    /**
+     * 登录校验
+     */
     @Autowired
     private SysLoginService sysLoginService;
 

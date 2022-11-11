@@ -34,8 +34,10 @@ public class XxlJobServiceImpl implements XxlJobService {
 
     @Resource
     private XxlJobGroupDao xxlJobGroupDao;
+
     @Resource
     private XxlJobInfoDao xxlJobInfoDao;
+
     @Resource
     public XxlJobLogDao xxlJobLogDao;
     @Resource

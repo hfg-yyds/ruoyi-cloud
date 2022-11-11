@@ -220,7 +220,7 @@ export default {
   mounted() {
     const el = this.$refs.dragTable.$el.querySelectorAll(".el-table__body-wrapper > table > tbody")[0];
     const sortable = Sortable.create(el, {
-      handle: ".allowDrag",
+      lineHandle: ".allowDrag",
       onEnd: evt => {
         const targetRow = this.columns.splice(evt.oldIndex, 1)[0];
         this.columns.splice(evt.newIndex, 0, targetRow);

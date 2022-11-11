@@ -91,7 +91,7 @@ export default {
   z-index: 40000;
 }
 
-.handle-button {
+.lineHandle-button {
   width: 48px;
   height: 48px;
   position: absolute;

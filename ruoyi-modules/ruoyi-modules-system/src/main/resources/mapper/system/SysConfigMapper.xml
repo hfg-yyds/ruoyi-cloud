@@ -34,17 +34,24 @@
     <sql id="sqlwhereSearch">
         <where>
             <if test="configId !=null">
-                and config_id = #{configid}
+                and config_id = #{config.configId}
             </if>
             <if test="configKey !=null and configKey != ''">
-                and config_key = #{configKey}
+                and config_key = #{config.configKey}
             </if>
         </where>
     </sql>
 
     <select id="selectConfig" parameterType="SysConfig" resultMap="SysConfigResult">
         <include refid="selectConfigVo"/>
-        <include refid="sqlwhereSearch"/>
+        <where>
+            <if test="config.configId !=null">
+                and config_id = #{config.configId}
+            </if>
+            <if test="config.configKey !=null and config.configKey != ''">
+                and config_key = #{config.configKey}
+            </if>
+        </where>
     </select>
 
     <select id="selectConfigList" parameterType="SysConfig" resultMap="SysConfigResult">

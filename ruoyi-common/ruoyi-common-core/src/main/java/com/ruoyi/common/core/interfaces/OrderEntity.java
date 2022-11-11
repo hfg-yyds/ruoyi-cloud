@@ -1,4 +1,4 @@
-package com.ruoyi.common.core.domain;
+package com.ruoyi.common.core.interfaces;
 
 /**
  * <p>
