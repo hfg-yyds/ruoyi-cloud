@@ -2,8 +2,12 @@ package com.ruoyi.common.redis.configure;
 
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.data.redis.RedisAutoConfiguration;
+import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CachingConfigurerSupport;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.interceptor.CacheErrorHandler;
+import org.springframework.cache.interceptor.CacheResolver;
+import org.springframework.cache.interceptor.KeyGenerator;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -43,6 +47,26 @@ public class RedisConfig extends CachingConfigurerSupport {
 
         template.afterPropertiesSet();
         return template;
+    }
+
+    @Override
+    public CacheManager cacheManager() {
+        return super.cacheManager();
+    }
+
+    @Override
+    public CacheResolver cacheResolver() {
+        return super.cacheResolver();
+    }
+
+    @Override
+    public KeyGenerator keyGenerator() {
+        return super.keyGenerator();
+    }
+
+    @Override
+    public CacheErrorHandler errorHandler() {
+        return super.errorHandler();
     }
 
 }

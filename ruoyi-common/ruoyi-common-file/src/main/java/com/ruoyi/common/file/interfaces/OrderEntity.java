@@ -1,4 +1,4 @@
-package com.ruoyi.common.core.interfaces;
+package com.ruoyi.common.file.interfaces;
 
 /**
  * <p>

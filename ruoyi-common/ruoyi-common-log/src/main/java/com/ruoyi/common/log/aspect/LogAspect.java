@@ -179,7 +179,7 @@ public class LogAspect {
      * 忽略敏感属性
      */
     public PropertyPreExcludeFilter excludePropertyPreFilter() {
-        return new PropertyPreExcludeFilter().addExcludes(EXCLUDE_PROPERTIES);
+        return PropertyPreExcludeFilter.getInstance().addExcludes(EXCLUDE_PROPERTIES);
     }
 
     /**

@@ -10,7 +10,6 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * <p>
- *  参数控制器
  * </p>
  *
  * @author: 韩福贵
@@ -23,7 +22,6 @@ public class ParamsController {
     @PostMapping("/hi")
     @ApiOperation(value = "测试")
     public R<SysUser> hi(@RequestBody RequestDTO<SysUser> requestDTO) {
-        System.out.println(requestDTO.getHeader());
         return R.ok(requestDTO.getBody());
     }
 

@@ -22,6 +22,7 @@ import com.ruoyi.job.service.ISysJobLogService;
  * @author ruoyi
  */
 public abstract class AbstractQuartzJob implements Job {
+
     private static final Logger log = LoggerFactory.getLogger(AbstractQuartzJob.class);
 
     /**

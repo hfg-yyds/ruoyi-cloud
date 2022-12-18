@@ -66,7 +66,7 @@ public class GenController extends BaseController {
         GenTable table = genTableService.selectGenTableById(tableId);
         List<GenTable> tables = genTableService.selectGenTableAll();
         List<GenTableColumn> list = genTableColumnService.selectGenTableColumnListByTableId(tableId);
-        Map<String, Object> map = new HashMap<String, Object>();
+        Map<String, Object> map = new HashMap<>();
         map.put("info", table);
         map.put("rows", list);
         map.put("tables", tables);
@@ -138,7 +138,7 @@ public class GenController extends BaseController {
      */
     @RequiresPermissions("tool:gen:preview")
     @GetMapping("/preview/{tableId}")
-    public AjaxResult preview(@PathVariable("tableId") Long tableId) throws IOException {
+    public AjaxResult preview(@PathVariable("tableId") Long tableId) {
         Map<String, String> dataMap = genTableService.previewCode(tableId);
         return AjaxResult.success(dataMap);
     }

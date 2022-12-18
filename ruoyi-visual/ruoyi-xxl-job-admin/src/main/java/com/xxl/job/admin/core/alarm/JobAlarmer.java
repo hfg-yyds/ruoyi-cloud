@@ -16,6 +16,7 @@ import java.util.Map;
 
 @Component
 public class JobAlarmer implements ApplicationContextAware, InitializingBean {
+
     private static Logger logger = LoggerFactory.getLogger(JobAlarmer.class);
 
     private ApplicationContext applicationContext;
@@ -29,7 +30,7 @@ public class JobAlarmer implements ApplicationContextAware, InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         Map<String, JobAlarm> serviceBeanMap = applicationContext.getBeansOfType(JobAlarm.class);
-        if (serviceBeanMap != null && serviceBeanMap.size() > 0) {
+        if (serviceBeanMap.size() > 0) {
             jobAlarmList = new ArrayList<JobAlarm>(serviceBeanMap.values());
         }
     }

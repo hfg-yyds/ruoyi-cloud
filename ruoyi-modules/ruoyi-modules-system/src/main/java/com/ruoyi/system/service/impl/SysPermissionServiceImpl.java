@@ -12,7 +12,9 @@ import com.ruoyi.system.service.ISysRoleService;
 
 @Service
 public class SysPermissionServiceImpl implements ISysPermissionService {
-
+    /**
+     * 角色Service
+     */
     @Autowired
     private ISysRoleService roleService;
 
@@ -45,7 +47,7 @@ public class SysPermissionServiceImpl implements ISysPermissionService {
      */
     @Override
     public Set<String> getMenuPermission(Long userId) {
-        Set<String> perms = new HashSet<String>();
+        Set<String> perms = new HashSet<>();
         // 管理员拥有所有权限
         if (SysUser.isAdmin(userId)) {
             perms.add("*:*:*");

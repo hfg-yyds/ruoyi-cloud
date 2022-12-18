@@ -78,3 +78,4 @@ xxl:
 ## Mybatis
 mybatis:
   mapper-locations: classpath:/mybatis-mapper/*Mapper.xml
+  type-aliases-package: com.xxl.job.admin.core

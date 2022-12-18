@@ -1,6 +1,6 @@
 package com.ruoyi.common.file.service;
 
-import com.ruoyi.common.core.interfaces.LineHandle;
+import com.ruoyi.common.file.interfaces.LineHandle;
 
 import java.io.File;
 

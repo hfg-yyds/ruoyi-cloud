@@ -1,7 +1,7 @@
 package com.ruoyi.test.file.entity;
 
 import com.ruoyi.common.core.annotation.FieldOrder;
-import com.ruoyi.common.core.interfaces.OrderEntity;
+import com.ruoyi.common.file.interfaces.OrderEntity;
 import lombok.Data;
 
 /**

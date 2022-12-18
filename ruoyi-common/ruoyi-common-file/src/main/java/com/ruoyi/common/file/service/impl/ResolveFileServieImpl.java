@@ -2,7 +2,7 @@ package com.ruoyi.common.file.service.impl;
 
 import cn.hutool.core.collection.ListUtil;
 import com.ruoyi.common.core.exception.busi.enums.FileException;
-import com.ruoyi.common.core.interfaces.LineHandle;
+import com.ruoyi.common.file.interfaces.LineHandle;
 import com.ruoyi.common.file.service.ResolveFileServie;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
 
 /**
  * <p>
- *
+ *  文件解析服务
  * </p>
  *
  * @author: 韩福贵
@@ -49,8 +49,10 @@ public class ResolveFileServieImpl implements ResolveFileServie {
             }
             lineHandle.handle(list);
         } catch (Exception e) {
+            log.error("文件解析异常"+e);
             throw FileException.FILE_PARSE_EXCEPTION.exception();
         }
     }
+
 
 }

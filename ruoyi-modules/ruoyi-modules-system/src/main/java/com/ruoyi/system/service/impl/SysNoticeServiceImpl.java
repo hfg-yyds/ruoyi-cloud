@@ -15,6 +15,10 @@ import com.ruoyi.system.service.ISysNoticeService;
  */
 @Service
 public class SysNoticeServiceImpl implements ISysNoticeService {
+
+    /**
+     * 系统公告服务层
+     */
     @Autowired
     private SysNoticeMapper noticeMapper;
 

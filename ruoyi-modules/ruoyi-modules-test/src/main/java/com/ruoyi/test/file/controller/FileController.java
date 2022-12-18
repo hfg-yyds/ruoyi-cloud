@@ -1,8 +1,7 @@
 package com.ruoyi.test.file.controller;
 
-import cn.hutool.core.collection.ListUtil;
 import cn.hutool.core.util.StrUtil;
-import com.ruoyi.common.core.utils.FieldUtil;
+import com.ruoyi.common.file.utils.FieldUtil;
 import com.ruoyi.common.file.service.impl.ResolveFileServieImpl;
 import com.ruoyi.test.file.entity.FileEntity;
 import lombok.extern.slf4j.Slf4j;

@@ -14,6 +14,7 @@
         <module>ruoyi-modules-gen</module>
         <module>ruoyi-modules-file</module>
         <module>ruoyi-modules-test</module>
+        <module>ruoyi-modules-params</module>
     </modules>
 
     <artifactId>ruoyi-modules</artifactId>

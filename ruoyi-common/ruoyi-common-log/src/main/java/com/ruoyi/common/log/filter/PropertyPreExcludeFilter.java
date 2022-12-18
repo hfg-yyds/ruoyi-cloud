@@ -8,13 +8,30 @@ import com.alibaba.fastjson2.filter.SimplePropertyPreFilter;
  * @author ruoyi
  */
 public class PropertyPreExcludeFilter extends SimplePropertyPreFilter {
-    public PropertyPreExcludeFilter() {
+    /**
+     * 私有化构造器
+     */
+    private PropertyPreExcludeFilter() {
     }
 
+    /**
+     * 得到Instance
+     * @return PropertyPreExcludeFilter
+     */
+    public static PropertyPreExcludeFilter getInstance() {
+        return new PropertyPreExcludeFilter();
+    }
+
+    /**
+     * 排除Json敏感数据
+     * @param filters filters
+     * @return PropertyPreExcludeFilter
+     */
     public PropertyPreExcludeFilter addExcludes(String... filters) {
-        for (int i = 0; i < filters.length; i++) {
-            this.getExcludes().add(filters[i]);
+        for (String filter : filters) {
+            this.getExcludes().add(filter);
         }
         return this;
     }
+
 }

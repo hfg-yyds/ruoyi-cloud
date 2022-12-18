@@ -1,10 +1,10 @@
-package com.ruoyi.common.core.interfaces;
+package com.ruoyi.common.file.interfaces;
 
 import java.util.List;
 
 /**
  * <p>
- *
+ *  行处理器
  * </p>
  *
  * @author: 韩福贵

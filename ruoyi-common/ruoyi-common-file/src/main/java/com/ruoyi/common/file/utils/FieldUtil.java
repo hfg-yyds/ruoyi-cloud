@@ -1,9 +1,9 @@
-package com.ruoyi.common.core.utils;
+package com.ruoyi.common.file.utils;
 
 import cn.hutool.core.lang.Assert;
 import cn.hutool.core.util.StrUtil;
 import com.ruoyi.common.core.annotation.FieldOrder;
-import com.ruoyi.common.core.interfaces.OrderEntity;
+import com.ruoyi.common.file.interfaces.OrderEntity;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.Field;
